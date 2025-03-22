@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "hearthfire:block/wild_rice_bottom"
+    },
+    "half=upper": {
+      "model": "hearthfire:block/wild_rice_top"
+    }
+  }
+}

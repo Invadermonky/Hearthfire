@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hearthfire:block/rich_soil"
+      },
+      {
+        "model": "hearthfire:block/rich_soil",
+        "y": 90
+      },
+      {
+        "model": "hearthfire:block/rich_soil",
+        "y": 180
+      },
+      {
+        "model": "hearthfire:block/rich_soil",
+        "y": 270
+      }
+    ]
+  }
+}

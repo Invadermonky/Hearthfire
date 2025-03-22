@@ -1,0 +1,9 @@
+{
+  "parent": "hearthfire:block/pie",
+  "textures": {
+    "particle": "hearthfire:block/sweet_berry_cheesecake_top",
+    "bottom": "hearthfire:block/pie_bottom",
+    "side": "hearthfire:block/pie_side",
+    "top": "hearthfire:block/sweet_berry_cheesecake_top"
+  }
+}

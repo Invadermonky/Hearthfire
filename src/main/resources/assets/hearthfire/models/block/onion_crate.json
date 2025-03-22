@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "hearthfire:block/crate_bottom",
+    "side": "hearthfire:block/onion_crate_side",
+    "top": "hearthfire:block/onion_crate_top"
+  }
+}

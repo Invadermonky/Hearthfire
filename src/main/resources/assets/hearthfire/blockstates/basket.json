@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "hearthfire:block/basket",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "hearthfire:block/basket",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "hearthfire:block/basket",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "hearthfire:block/basket",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "hearthfire:block/basket"
+    },
+    "facing=west": {
+      "model": "hearthfire:block/basket",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "hearthfire:blocks/mushroom_colony_red"
+  }
+}

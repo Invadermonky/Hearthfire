@@ -1,0 +1,103 @@
+{
+  "block.cooking_pot.boil": {
+    "subtitle": "hearthfire.subtitles.cooking_pot.boil",
+    "sounds": [
+      "hearthfire:block/cooking_pot/boil_water1",
+      "hearthfire:block/cooking_pot/boil_water2"
+    ]
+  },
+  "block.cooking_pot.boil_soup": {
+    "subtitle": "hearthfire.subtitles.cooking_pot.boil",
+    "sounds": [
+      "hearthfire:block/cooking_pot/boil_soup1",
+      "hearthfire:block/cooking_pot/boil_soup2",
+      "hearthfire:block/cooking_pot/boil_soup3"
+    ]
+  },
+  "block.cutting_board.knife": {
+    "subtitle": "hearthfire.subtitles.cutting_board.knife_cut",
+    "sounds": [
+      "hearthfire:block/cutting_board/knife1",
+      "hearthfire:block/cutting_board/knife2"
+    ]
+  },
+  "block.skillet.sizzle": {
+    "subtitle": "hearthfire.subtitles.skillet.sizzle",
+    "sounds": [
+      "hearthfire:block/skillet/sizzle1",
+      "hearthfire:block/skillet/sizzle2",
+      "hearthfire:block/skillet/sizzle3"
+    ]
+  },
+  "block.skillet.add_food": {
+    "subtitle": "hearthfire.subtitles.skillet.add_food",
+    "sounds": [
+      "hearthfire:block/skillet/add_food1",
+      "hearthfire:block/skillet/add_food2"
+    ]
+  },
+  "item.skillet.attack.strong": {
+    "sounds": [
+      "hearthfire:block/skillet/attack_strong"
+    ]
+  },
+  "item.skillet.attack.weak": {
+    "sounds": [
+      "hearthfire:block/skillet/attack_weak"
+    ]
+  },
+  "block.stove.crackle": {
+    "subtitle": "hearthfire.subtitles.stove.crackle",
+    "sounds": [
+      {
+        "name": "block.campfire.crackle",
+        "type": "event"
+      }
+    ]
+  },
+  "block.cabinet.open": {
+    "subtitle": "hearthfire.subtitles.cabinet.open",
+    "sounds": [
+      {
+        "name": "block.barrel.open",
+        "type": "event"
+      }
+    ]
+  },
+  "block.cabinet.close": {
+    "subtitle": "hearthfire.subtitles.cabinet.close",
+    "sounds": [
+      {
+        "name": "block.barrel.close",
+        "type": "event"
+      }
+    ]
+  },
+  "block.tomato_bush.pick_tomatoes": {
+    "subtitle": "hearthfire.subtitles.tomato.pick",
+    "sounds": [
+      {
+        "name": "block.sweet_berry_bush.pick_berries",
+        "type": "event"
+      }
+    ]
+  },
+  "entity.rotten_tomato.throw": {
+    "subtitle": "hearthfire.subtitles.rotten_tomato.throw",
+    "sounds": [
+      {
+        "name": "entity.snowball.throw",
+        "type": "event"
+      }
+    ]
+  },
+  "entity.rotten_tomato.hit": {
+    "subtitle": "hearthfire.subtitles.rotten_tomato.hit",
+    "sounds": [
+      {
+        "name": "entity.slime.attack",
+        "type": "event"
+      }
+    ]
+  }
+}

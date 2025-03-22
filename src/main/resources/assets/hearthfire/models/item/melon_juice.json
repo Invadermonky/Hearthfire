@@ -1,0 +1,6 @@
+{
+  "parent": "hearthfire:item/mug",
+  "textures": {
+    "layer0": "hearthfire:item/melon_juice"
+  }
+}

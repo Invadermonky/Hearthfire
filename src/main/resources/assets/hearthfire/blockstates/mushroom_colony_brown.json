@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "hearthfire:mushroom_colony_brown_stage0"
+    },
+    "age=1": {
+      "model": "hearthfire:mushroom_colony_brown_stage1"
+    },
+    "age=2": {
+      "model": "hearthfire:mushroom_colony_brown_stage2"
+    },
+    "age=3": {
+      "model": "hearthfire:mushroom_colony_brown_stage3"
+    }
+  }
+}

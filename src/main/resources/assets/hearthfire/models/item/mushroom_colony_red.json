@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hearthfire:block/mushroom_colony_red_stage3"
+  }
+}

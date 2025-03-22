@@ -1,0 +1,295 @@
+
+# Advancements
+# Blocks
+# Containers
+# Death
+# Entities
+# Effects
+effect.hearthfire:comfort=Comfort
+effect.hearthfire:nourishment=Nourishment
+effect.hearthfire:rested=Rested
+effect.hearthfire:safeguarded=Safeguarded
+
+effect.hearthfire:comfort.0.desc=Provides natural regeneration, regardless of how hungry you are.
+effect.hearthfire:nourishment.0.desc=Prevents hunger loss, except when using saturation to heal damage.
+effect.hearthfire:rested.0.desc=Slightly increases experience gained.
+effect.hearthfire:safeguarded.0.desc=Removes one negative potion effect per rank.
+
+# Enchants
+# Items
+# JEI
+# Subtitles
+# Tooltips
+
+
+tile.hearthfire:stove.name=Stove
+tile.hearthfire:cooking_pot.name=Cooking Pot
+tile.hearthfire:basket.name=Basket
+tile.hearthfire:cutting_board.name=Cutting Board
+tile.hearthfire:skillet.name=Skillet
+tile.hearthfire:oak_cabinet.name=Oak Cabinet
+tile.hearthfire:birch_cabinet.name=Birch Cabinet
+tile.hearthfire:spruce_cabinet.name=Spruce Cabinet
+tile.hearthfire:jungle_cabinet.name=Jungle Cabinet
+tile.hearthfire:acacia_cabinet.name=Acacia Cabinet
+tile.hearthfire:dark_oak_cabinet.name=Dark Oak Cabinet
+tile.hearthfire:rope.name=Rope
+tile.hearthfire:safety_net.name=Safety Net
+tile.hearthfire:tatami.name=Tatami Block
+tile.hearthfire:full_tatami_mat.name=Full Tatami Mat
+tile.hearthfire:half_tatami_mat.name=Half Tatami Mat
+tile.hearthfire:organic_compost.name=Organic Compost
+tile.hearthfire:rich_soil.name=Rich Soil
+tile.hearthfire:rich_soil_farmland.name=Rich Soil Farmland
+tile.hearthfire:carrot_crate.name=Carrot Crate
+tile.hearthfire:potato_crate.name=Potato Crate
+tile.hearthfire:beetroot_crate.name=Beetroot Crate
+tile.hearthfire:cabbage_crate.name=Cabbage Crate
+tile.hearthfire:tomato_crate.name=Tomato Crate
+tile.hearthfire:onion_crate.name=Onion Crate
+tile.hearthfire:rice_bale.name=Rice Bale
+tile.hearthfire:rice_bag.name=Bag of Rice
+tile.hearthfire:straw_bale.name=Straw Bale
+
+
+tile.hearthfire:budding_tomatoes.name=Budding Tomato Vine
+tile.hearthfire:tomatoes.name=Tomato Vine
+tile.hearthfire:cabbages.name=Cabbage
+tile.hearthfire:onions.name=Onions
+tile.hearthfire:rice.name=Rice Crops
+tile.hearthfire:rice_panicles.name=Rice Crops
+tile.hearthfire:mushroom_colony_brown.name=Brown Mushroom Colony
+tile.hearthfire:mushroom_colony_red.name=Red Mushroom Colony
+
+tile.hearthfire:sandy_shrub.name=Sandy Shrub
+tile.hearthfire:wild_cabbages.name=Wild Cabbage
+tile.hearthfire:wild_tomatoes.name=Tomato Shrub
+tile.hearthfire:wild_onions.name=Wild Onion
+tile.hearthfire:wild_carrots.name=Wild Carrot
+tile.hearthfire:wild_potatoes.name=Wild Potato
+tile.hearthfire:wild_beetroots.name=Sea Beet
+tile.hearthfire:wild_rice.name=Wild Rice
+
+tile.hearthfire:apple_pie.name=Apple Pie
+tile.hearthfire:sweet_berry_cheesecake.name=Sweet Berry Cheesecake
+tile.hearthfire:chocolate_pie.name=Chocolate Pie
+
+item.hearthfire:tomato.name=Tomato
+item.hearthfire:cabbage.name=Cabbage
+item.hearthfire:onion.name=Onion
+item.hearthfire:rice.name=Rice
+item.hearthfire:cabbage_seeds.name=Cabbage Seeds
+item.hearthfire:tomato_seeds.name=Tomato Seeds
+item.hearthfire:rice_panicle.name=Rice Panicle
+item.hearthfire:rotten_tomato.name=Rotten Tomato
+
+item.hearthfire:straw.name=Straw
+item.hearthfire:tree_bark.name=Tree Bark
+
+item.hearthfire:tomato_sauce.name=Tomato Sauce
+item.hearthfire:fried_egg.name=Fried Egg
+item.hearthfire:milk_bottle.name=Milk Bottle
+item.hearthfire:hot_cocoa.name=Hot Cocoa
+item.hearthfire:apple_cider.name=Apple Cider
+item.hearthfire:melon_juice.name=Melon Juice
+item.hearthfire:wheat_dough.name=Wheat Dough
+item.hearthfire:raw_pasta.name=Raw Pasta
+item.hearthfire:pumpkin_slice.name=Pumpkin Slice
+item.hearthfire:cabbage_leaf.name=Cabbage Leaf
+item.hearthfire:minced_beef.name=Minced Beef
+item.hearthfire:beef_patty.name=Beef Patty
+item.hearthfire:chicken_cuts.name=Raw Chicken Cuts
+item.hearthfire:cooked_chicken_cuts.name=Cooked Chicken Cuts
+item.hearthfire:bacon.name=Raw Bacon
+item.hearthfire:cooked_bacon.name=Cooked Bacon
+item.hearthfire:cod_slice.name=Raw Cod Slice
+item.hearthfire:cooked_cod_slice.name=Cooked Cod Slice
+item.hearthfire:salmon_slice.name=Raw Salmon Slice
+item.hearthfire:cooked_salmon_slice.name=Cooked Salmon Slice
+item.hearthfire:mutton_chops.name=Raw Mutton Chops
+item.hearthfire:cooked_mutton_chops.name=Cooked Mutton Chops
+item.hearthfire:ham.name=Ham
+item.hearthfire:smoked_ham.name=Smoked Ham
+
+item.hearthfire:pie_crust.name=Pie Crust
+item.hearthfire:cake_slice.name=Slice of Cake
+item.hearthfire:apple_pie_slice.name=Slice of Apple Pie
+item.hearthfire:sweet_berry_cheesecake_slice.name=Slice of Sweet Berry Cheesecake
+item.hearthfire:chocolate_pie_slice.name=Slice of Chocolate Pie
+item.hearthfire:fruit_salad.name=Fruit Salad
+item.hearthfire:sweet_berry_cookie.name=Sweet Berry Cookie
+item.hearthfire:honey_cookie.name=Honey Cookie
+item.hearthfire:melon_popsicle.name=Melon Popsicle
+item.hearthfire:glow_berry_custard.name=Glow Berry Custard
+
+item.hearthfire:earthworm.name=Earthworm
+
+item.hearthfire:knife_flint.name=Flint Knife
+item.hearthfire:knife_iron.name=Iron Knife
+item.hearthfire:knife_golden.name=Golden Knife
+item.hearthfire:knife_diamond.name=Diamond Knife
+item.hearthfire:knife_netherite.name=Netherite Knife
+
+item.hearthfire:barbecue_stick.name=Barbecue on a Stick
+item.hearthfire:egg_sandwich.name=Egg Sandwich
+item.hearthfire:chicken_sandwich.name=Chicken Sandwich
+item.hearthfire:hamburger.name=Hamburger
+item.hearthfire:bacon_sandwich.name=Bacon Sandwich
+item.hearthfire:mutton_wrap.name=Mutton Wrap
+item.hearthfire:dumplings.name=Dumplings
+item.hearthfire:stuffed_potato.name=Stuffed Potato
+item.hearthfire:cabbage_rolls.name=Cabbage Rolls
+item.hearthfire:salmon_roll.name=Salmon Roll
+item.hearthfire:cod_roll.name=Cod Roll
+item.hearthfire:kelp_roll.name=Kelp Roll
+item.hearthfire:kelp_roll_slice.name=Kelp Roll Slice
+
+item.hearthfire:cooked_rice.name=Cooked Rice
+item.hearthfire:mixed_salad.name=Mixed Salad
+item.hearthfire:nether_salad.name=Nether Salad
+item.hearthfire:beef_stew.name=Beef Stew
+item.hearthfire:chicken_soup.name=Chicken Soup
+item.hearthfire:vegetable_soup.name=Vegetable Soup
+item.hearthfire:fish_stew.name=Fish Stew
+item.hearthfire:fried_rice.name=Fried Rice
+item.hearthfire:pumpkin_soup.name=Pumpkin Soup
+item.hearthfire:baked_cod_stew.name=Baked Cod Stew
+item.hearthfire:noodle_soup.name=Noodle Soup
+item.hearthfire:bone_broth.name=Bone Broth
+
+item.hearthfire:bacon_and_eggs.name=Bacon and Eggs
+item.hearthfire:pasta_with_meatballs.name=Pasta with Meatballs
+item.hearthfire:pasta_with_mutton_chop.name=Pasta with Mutton Chop
+item.hearthfire:roasted_mutton_chops.name=Roasted Mutton Chops
+item.hearthfire:steak_and_potatoes.name=Steak and Potatoes
+item.hearthfire:vegetable_noodles.name=Vegetable Noodles
+item.hearthfire:ratatouille.name=Ratatouille
+item.hearthfire:squid_ink_pasta.name=Squid Ink Pasta
+item.hearthfire:grilled_salmon.name=Grilled Salmon
+item.hearthfire:mushroom_rice.name=Mushroom Rice
+
+tile.hearthfire:roast_chicken_block.name=Roast Chicken
+item.hearthfire:roast_chicken.name=Plate of Roast Chicken
+tile.hearthfire:stuffed_pumpkin_block.name=Stuffed Pumpkin
+item.hearthfire:stuffed_pumpkin.name=Bowl of Stuffed Pumpkin
+tile.hearthfire:honey_glazed_ham_block.name=Honey Glazed Ham
+item.hearthfire:honey_glazed_ham.name=Plate of Honey Glazed Ham
+tile.hearthfire:shepherds_pie_block.name=Shepherd's Pie
+item.hearthfire:shepherds_pie.name=Plate of Shepherd's Pie
+tile.hearthfire:rice_roll_medley_block.name=Rice Roll Medley
+
+item.hearthfire:dog_food.name=Dog Food
+item.hearthfire:horse_feed.name=Horse Feed
+
+entity.hearthfire:rotten_tomato=Rotten Tomato
+
+
+enchantment.hearthfire:backstabbing=Backstabbing
+enchantment.hearthfire:backstabbing.desc=Amplifies damage when striking a target from behind.
+
+itemGroup.hearthfire=Hearthfire
+
+container.hearthfire:recipe_book.cookable=Showing Cookable
+container.hearthfire:cooking_pot=Cooking Pot
+container.hearthfire:cooking_pot.served_on=Served on: %s
+container.hearthfire:cooking_pot.not_heated=Needs heat from below
+container.hearthfire:cooking_pot.heated=Heated
+container.hearthfire:basket=Basket
+container.hearthfire:cabinet=Cabinet
+
+tooltip.hearthfire:cooking_pot.empty=Empty
+tooltip.hearthfire:cooking_pot.single_serving=Holds 1 serving of:
+tooltip.hearthfire:cooking_pot.many_servings=Holds %s servings of:
+tooltip.hearthfire:dog_food.when_feeding=When fed to a tamed Wolf:
+tooltip.hearthfire:horse_feed.when_feeding=When fed to a tamed mount:
+tooltip.hearthfire:milk_bottle=Clears 1 Effect
+tooltip.hearthfire:hot_cocoa=Clears 1 Harmful Effect
+tooltip.hearthfire:melon_juice=Minor Instant Health
+
+advancement.hearthfire:root=Hearthfire
+advancement.hearthfire:root.desc=A world of flavor awaits you!
+
+advancement.hearthfire:craft_knife=Hunt and Gather
+advancement.hearthfire:craft_knife.desc=Craft a Knife to scavenge extra goods from plants and animals
+advancement.hearthfire:harvest_straw=Grasping at Straws
+advancement.hearthfire:harvest_straw.desc=Harvest grass, wheat or rice with a Knife to collect Straw
+advancement.hearthfire:place_organic_compost=Advanced Composting
+advancement.hearthfire:place_organic_compost.desc=Place down some Organic Compost. It composts better with sun, water and mushrooms!
+advancement.hearthfire:get_rich_soil=Plant Food
+advancement.hearthfire:get_rich_soil.desc=Organic Compost slowly decays into Rich Soil, an upgrade for your farms!
+advancement.hearthfire:get_ham=Wild Butcher
+advancement.hearthfire:get_ham.desc=Use a Knife to extract Ham from Pigs or Hoglins
+advancement.hearthfire:use_cutting_board=Watch Your Fingers
+advancement.hearthfire:use_cutting_board.desc=With a tool in hand, use a Cutting Board to break down an item
+advancement.hearthfire:obtain_netherite_knife=If You Can't Take the Heat...
+advancement.hearthfire:obtain_netherite_knife.desc=Spend a whole Netherite Ingot to upgrade your knife! Or get out of the kitchen.
+
+advancement.hearthfire:get_fd_seed=Crops of the Wild
+advancement.hearthfire:get_fd_seed.desc=Four new crops may be found in the wild, across many climates... or maybe in a chest somewhere.
+advancement.hearthfire:plant_rice=Dipping Your Roots
+advancement.hearthfire:plant_rice.desc=Plant grains of Rice in a shallow water puddle
+advancement.hearthfire:harvest_ropelogged_tomato=Tall-mato
+advancement.hearthfire:harvest_ropelogged_tomato.desc=Hang some rope above a tomato crop to make it grow taller
+advancement.hearthfire:hit_raider_with_rotten_tomato=Boo! Hiss!
+advancement.hearthfire:hit_raider_with_rotten_tomato.desc=Throw a Rotten Tomato at one of these pesky raiders!
+advancement.hearthfire:get_mushroom_colony=Fungus Among Us
+advancement.hearthfire:get_mushroom_colony.desc=Shear a fully mature Mushroom Colony. To grow them like this, you'll need a very rich soil...
+advancement.hearthfire:plant_all_crops=Crop Rotation
+advancement.hearthfire:plant_all_crops.desc=Cultivate every food-related plant you can find, such as vegetables, fruits, fungi or roots!
+
+advancement.hearthfire:place_campfire=Bonfire Lit
+advancement.hearthfire:place_campfire.desc=Place down a Campfire to cook some food
+advancement.hearthfire:use_skillet=Portable Cooking
+advancement.hearthfire:use_skillet.desc=Skillets let you cook on the go. Stand near heat, then hold food in your other hand!
+advancement.hearthfire:place_skillet=Sizzling Hot!
+advancement.hearthfire:place_skillet.desc=Sneak to place your Skillet down as a block
+advancement.hearthfire:place_cooking_pot=Dinner's Served!
+advancement.hearthfire:place_cooking_pot.desc=Put down a Cooking Pot and start preparing meals!
+advancement.hearthfire:eat_comfort_food=Comforting!
+advancement.hearthfire:eat_comfort_food.desc=Warm bowl meals will keep you healing steadily, no matter how hungry you are!
+advancement.hearthfire:eat_nourishing_food=Nourishing!
+advancement.hearthfire:eat_nourishing_food.desc=Plated meals will prevent you from getting exhausted or hungry for a while!
+advancement.hearthfire:place_feast=A Glorious Feast
+advancement.hearthfire:place_feast.desc=Some meals are big enough to be placed down and shared with friends!
+advancement.hearthfire:master_chef=Master Chef
+advancement.hearthfire:master_chef.desc=Eat a course of every meal available!
+
+subtitles.hearthfire:cooking_pot.boil=Cooking Pot boils
+subtitles.hearthfire:cutting_board.knife_cut=Knife cuts
+subtitles.hearthfire:stove.crackle=Stove crackles
+subtitles.hearthfire:skillet.sizzle=Skillet sizzles
+subtitles.hearthfire:skillet.add_food=Skillet hisses
+subtitles.hearthfire:cabinet.open=Cabinet opens
+subtitles.hearthfire:cabinet.close=Cabinet closes
+subtitles.hearthfire:tomato.pick=Tomatoes pop
+subtitles.hearthfire:rotten_tomato.throw=Rotten Tomato flies
+subtitles.hearthfire:rotten_tomato.hit=Rotten Tomato splatters
+
+tile.hearthfire:feast.use_container.name=You need a %s to eat this.
+tile.hearthfire:rice.invalid_placement.name=This crop won't survive well outside shallow water.
+tile.hearthfire:cutting_board.invalid_item.name=This doesn't seem cuttable...
+tile.hearthfire:cutting_board.invalid_tool.name=Maybe with a different tool...
+tile.hearthfire:skillet.invalid_item.name=This can't be cooked...
+item.hearthfire:skillet.how_to_cook.name=Use your other hand to hold ingredients!
+
+death.attack.hearthfire:stove=%1$s was grilled to perfection
+death.attack.hearthfire:stove.player=%1$s was thrown on the grill by Chef %2$s
+
+jei.hearthfire:cooking=Cooking
+jei.hearthfire:cutting=Cutting Board
+jei.hearthfire:chance=%1$s%% chance
+jei.hearthfire:decomposition=Decomposition
+jei.hearthfire:decomposition.light=Sped up by sunlight
+jei.hearthfire:decomposition.fluid=Sped up by adjacent water
+jei.hearthfire:decomposition.accelerators=Sped up by adjacent activators (see below)
+
+jei.hearthfire:straw.info=A dry plant fiber used in crafting. Obtained by cutting grassy crops and plants with a Knife.
+jei.hearthfire:knife.info=A lightweight melee weapon, with fast swings and gentle damage.\n\nThey can harvest Straw from grasses, and guarantee secondary drops from animals.
+jei.hearthfire:ham.info=A large cut of meat from a Pig or Hoglin's leg.\n\nYou will need something lighter than a Sword to cut one...
+jei.hearthfire:wild_cabbages.info=Cabbages can be commonly found as a wild plant in beach coasts.
+jei.hearthfire:wild_beetroots.info=Beetroot can be commonly found as a wild plant in beach coasts.
+jei.hearthfire:wild_carrots.info=Carrots can be commonly found as a wild plant in temperate lands, such as plains and forests.
+jei.hearthfire:wild_onions.info=Onions can be commonly found as a wild plant in temperate lands, such as plains and forests.
+jei.hearthfire:wild_potatoes.info=Potatoes can be commonly found as a wild plant in cold lands, such as mountains and taigas.
+jei.hearthfire:wild_tomatoes.info=Tomatoes can be commonly found as a wild plant in arid lands, such as savannas and deserts.
+jei.hearthfire:info.wild_rice=Rice can be commonly found as a wild plant in the ponds of wet lands, such as swamps and jungles.

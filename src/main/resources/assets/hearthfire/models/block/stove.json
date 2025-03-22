@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "hearthfire:block/stove_bottom",
+    "front": "hearthfire:block/stove_front",
+    "side": "hearthfire:block/stove_side",
+    "top": "hearthfire:block/stove_top"
+  }
+}
