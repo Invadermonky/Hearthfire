@@ -1,6 +1,12 @@
 
 # Advancements
 # Blocks
+tile.hearthfire:wild_corn.name=Wild Corn
+
+# Chat
+chat.hearthfire:feast_interact_failure.bowl=You need a bowl to eat this.
+chat.hearthfire:feast_interact_failure.knife=You need a knife to eat this.
+
 # Containers
 # Death
 # Entities
@@ -17,9 +23,24 @@ effect.hearthfire:safeguarded.0.desc=Removes one negative potion effect per rank
 
 # Enchants
 # Items
+item.hearthfire:cabbage.name=Cabbage
+item.hearthfire:corn.name=Corn
+item.hearthfire:knife_flint.name=Flint Knife
+item.hearthfire:knife_iron.name=Iron Knife
+item.hearthfire:knife_gold.name=Golden Knife
+item.hearthfire:knife_diamond.name=Diamond Knife
+item.hearthfire:seeds_cabbage.name=Cabbage Seeds
+item.hearthfire:seeds_corn.name=Corn Seeds
+
 # JEI
 # Subtitles
 # Tooltips
+tooltip.hearthfire:feast.servings=Servings: %d
+
+
+
+
+
 
 
 tile.hearthfire:stove.name=Stove
@@ -75,7 +96,6 @@ tile.hearthfire:sweet_berry_cheesecake.name=Sweet Berry Cheesecake
 tile.hearthfire:chocolate_pie.name=Chocolate Pie
 
 item.hearthfire:tomato.name=Tomato
-item.hearthfire:cabbage.name=Cabbage
 item.hearthfire:onion.name=Onion
 item.hearthfire:rice.name=Rice
 item.hearthfire:cabbage_seeds.name=Cabbage Seeds
@@ -124,10 +144,6 @@ item.hearthfire:glow_berry_custard.name=Glow Berry Custard
 
 item.hearthfire:earthworm.name=Earthworm
 
-item.hearthfire:knife_flint.name=Flint Knife
-item.hearthfire:knife_iron.name=Iron Knife
-item.hearthfire:knife_golden.name=Golden Knife
-item.hearthfire:knife_diamond.name=Diamond Knife
 item.hearthfire:knife_netherite.name=Netherite Knife
 
 item.hearthfire:barbecue_stick.name=Barbecue on a Stick

@@ -1,6 +1,6 @@
 package com.invadermonky.hearthfire.effects;
 
-import com.invadermonky.hearthfire.util.GuiHelper;
+import com.invadermonky.hearthfire.util.helpers.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;

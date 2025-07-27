@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "hearthfire:item/light_blue_canvas_sign"
-  }
-}

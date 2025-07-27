@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class OverlayComfort {
     public static void renderComfortOverlay(ScaledResolution resolution, EntityPlayer player) {
-        if(!ConfigHandlerHF.client_config.enableComfortOverlay)
+        if (!ConfigHandlerHF.client_config.enableComfortOverlay)
             return;
 
         Minecraft minecraft = Minecraft.getMinecraft();
@@ -27,7 +27,7 @@ public class OverlayComfort {
                 (player.getHealth() < player.getMaxHealth()) &&
                 !player.isPotionActive(MobEffects.REGENERATION);
 
-        if(player.isPotionActive(ModPotionsHF.COMFORT) && isPlayerEligibleForComfort) {
+        if (player.isPotionActive(ModPotionsHF.COMFORT) && isPlayerEligibleForComfort) {
             int top = resolution.getScaledHeight();
             int left = resolution.getScaledWidth();
             drawComfortOverlay(player, minecraft, left, top);
@@ -43,7 +43,7 @@ public class OverlayComfort {
         float healthMax = player.getMaxHealth();
 
         int regen = -1;
-        if(player.isPotionActive(MobEffects.REGENERATION))
+        if (player.isPotionActive(MobEffects.REGENERATION))
             regen = ticks % 25;
 
         int comfortSheen = ticks % 50;
@@ -56,20 +56,20 @@ public class OverlayComfort {
 
         int healthMaxSingleRow = MathUtils.ceil(Math.min(healthMax, 20) / 2.0f);
 
-        for(int i = 0; i < healthMaxSingleRow; i++) {
+        for (int i = 0; i < healthMaxSingleRow; i++) {
             int column = i % 10;
             int x = left / 2 - 91 + column * 8 - ConfigHandlerHF.client_config.overlayComfortXOffset;
             int y = top - 39 - ConfigHandlerHF.client_config.overlayComfortYOffset;
 
-            if(health <= 4)
+            if (health <= 4)
                 y += rand.nextInt(2);
-            if(i == regen)
+            if (i == regen)
                 y -= 2;
 
-            if(column == comfortSheen / 2) {
+            if (column == comfortSheen / 2) {
                 minecraft.ingameGUI.drawTexturedModalRect(x, y, 0, 9, textureWidth[comfortHeartFrame], 9);
             }
-            if(column == (comfortSheen / 2) - 1 && comfortHeartFrame == 0) {
+            if (column == (comfortSheen / 2) - 1 && comfortHeartFrame == 0) {
                 minecraft.ingameGUI.drawTexturedModalRect(x + 5, y, 5, 9, 4, 9);
             }
         }

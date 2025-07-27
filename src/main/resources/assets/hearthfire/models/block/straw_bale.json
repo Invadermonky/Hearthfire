@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "hearthfire:block/straw_bale_end",
-    "side": "hearthfire:block/straw_bale_side"
-  }
-}

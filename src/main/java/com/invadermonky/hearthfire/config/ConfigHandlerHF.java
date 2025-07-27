@@ -45,29 +45,25 @@ public class ConfigHandlerHF {
     }
 
     public static class CropConfig {
-        public ModdedCropConfig crop_cabbage = new ModdedCropConfig(30, new String[] {COLD.getName()}, new String[] {BEACH.getName()});
-        public ModdedCropConfig crop_onions = new ModdedCropConfig(120, new String[] {COLD.getName(), HOT.getName()}, new String[0]);
-        public ModdedCropConfig crop_tomatoes = new ModdedCropConfig(100, new String[0], new String[] {HOT.getName()});
+        public ModdedCropConfig crop_cabbage = new ModdedCropConfig(30, new String[]{COLD.getName()}, new String[]{BEACH.getName()});
+        public ModdedCropConfig crop_onions = new ModdedCropConfig(120, new String[]{COLD.getName(), HOT.getName()}, new String[0]);
+        public ModdedCropConfig crop_tomatoes = new ModdedCropConfig(100, new String[0], new String[]{HOT.getName()});
         public ModdedCropConfig crop_rice = new ModdedCropConfig(20, new String[0], new String[0]);
 
-        public WildCropConfig wild_beetroot = new WildCropConfig(30, new String[] {COLD.getName()}, new String[] {BEACH.getName()});
-        public WildCropConfig wild_carrots = new WildCropConfig(120, new String[] {COLD.getName(), HOT.getName()}, new String[0]);
-        public WildCropConfig wild_potatoes = new WildCropConfig(100, new String[0], new String[] {COLD.getName()});
+        public WildCropConfig wild_beetroot = new WildCropConfig(30, new String[]{COLD.getName()}, new String[]{BEACH.getName()});
+        public WildCropConfig wild_carrots = new WildCropConfig(120, new String[]{COLD.getName(), HOT.getName()}, new String[0]);
+        public WildCropConfig wild_potatoes = new WildCropConfig(100, new String[0], new String[]{COLD.getName()});
 
         public WildCropConfig brown_mushroom_colony = new WildCropConfig(15, new String[0], new String[0]);
         public WildCropConfig red_mushroom_colony = new WildCropConfig(15, new String[0], new String[0]);
     }
 
 
-
-
-
-
     @Mod.EventBusSubscriber(modid = Hearthfire.MOD_ID)
     public static class ConfigChangeListener {
         @SubscribeEvent
         public static void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent event) {
-            if(event.getModID().equals(Hearthfire.MOD_ID)) {
+            if (event.getModID().equals(Hearthfire.MOD_ID)) {
                 ConfigManager.sync(Hearthfire.MOD_ID, Type.INSTANCE);
                 ModTags.syncConfigValues();
             }

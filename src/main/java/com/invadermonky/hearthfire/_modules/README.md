@@ -1,7 +1,12 @@
 # Description
-This is the folder for all the Hearthstone modules. The gradle will need to be remapped to build multiple jars from these module subdirectories.
+
+This is the folder for all the Hearthstone modules. The gradle will need to be remapped to build multiple jars from
+these module subdirectories.
+
 - core (needs rename) - will hold most of the builder code and the main integrations (GroovyScript, Crafttweaker, JEI)
-  - **IMPORTANT** the core module will not add any in-game items/registries. It can have all the block/item code but will not add anything itself. This means that certain additions such as potion effects will be isolated within their respective modules.
+    - **IMPORTANT** the core module will not add any in-game items/registries. It can have all the block/item code but
+      will not add anything itself. This means that certain additions such as potion effects will be isolated within
+      their respective modules.
 - decorations - decorations module
 - farmandfeast - will hold all the code associated with foods, feasts, and crops
 - hearthandhome - the light-magic system built around base building

@@ -14,5 +14,5 @@ public class SettingsConfig {
     @Comment("Allows players to reel ropes back when using them with an empty hand while sneaking.")
     public boolean enableRopeReeling = true;
     @Comment("A list of dye colors that, when used as the background of a Canvas Sign, will default to white text.")
-    public String[] canvasSignDarkBackgroundList = new String[] {"gray", "purple", "blue", "brown", "green", "red", "black"};
+    public String[] canvasSignDarkBackgroundList = new String[]{"gray", "purple", "blue", "brown", "green", "red", "black"};
 }

@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.effects;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.util.StringHelper;
+import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.FoodStats;
@@ -18,19 +18,19 @@ public class EffectNourishment extends AbstractPotionHF {
 
     @Override
     public void performEffect(EntityLivingBase entity, int amplifier) {
-        if(!entity.world.isRemote && entity instanceof EntityPlayer) {
+        if (!entity.world.isRemote && entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             FoodStats foodStats = player.getFoodStats();
 
             boolean isPlayerHealingWithHunger =
                     player.world.getGameRules().getBoolean("naturalRegeneration") &&
-                    (player.getHealth() < player.getMaxHealth()) &&
-                    foodStats.getFoodLevel() >= 18;
+                            (player.getHealth() < player.getMaxHealth()) &&
+                            foodStats.getFoodLevel() >= 18;
 
-            if(!isPlayerHealingWithHunger) {
+            if (!isPlayerHealingWithHunger) {
                 float exhaustion = foodStats.foodExhaustionLevel;
                 float reduction = Math.min(exhaustion, 4.0f);
-                if(exhaustion > 0) {
+                if (exhaustion > 0) {
                     player.addExhaustion(-reduction);
                 }
             }

@@ -6,7 +6,7 @@ import com.invadermonky.hearthfire.client.gui.overlays.OverlayNourishment;
 import com.invadermonky.hearthfire.config.ConfigHandlerHF;
 import com.invadermonky.hearthfire.items.properties.FoodProperties;
 import com.invadermonky.hearthfire.libs.FoodValues;
-import com.invadermonky.hearthfire.util.StringHelper;
+import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ScaledResolution;
@@ -31,10 +31,10 @@ public class ClientEvents {
         ScaledResolution scaledResolution = new ScaledResolution(mc);
         EntityPlayerSP player = mc.player;
 
-        if(player == null)
+        if (player == null)
             return;
 
-        if(!mc.gameSettings.hideGUI && mc.playerController.gameIsSurvivalOrAdventure()) {
+        if (!mc.gameSettings.hideGUI && mc.playerController.gameIsSurvivalOrAdventure()) {
             if (event.getType() == RenderGameOverlayEvent.ElementType.HEALTH) {
                 OverlayComfort.renderComfortOverlay(scaledResolution, player);
             } else if (event.getType() == RenderGameOverlayEvent.ElementType.FOOD) {
@@ -46,16 +46,16 @@ public class ClientEvents {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onTooltipRender(ItemTooltipEvent event) {
         //TODO: Config for vanilla soup effects
-        if(!ConfigHandlerHF.food_config.vanilla_foods.enableVanillaSoupsExtraEffects || !ConfigHandlerHF.client_config.foodEffectTooltip)
+        if (!ConfigHandlerHF.food_config.vanilla_foods.enableVanillaSoupsExtraEffects || !ConfigHandlerHF.client_config.foodEffectTooltip)
             return;
 
         Item food = event.getItemStack().getItem();
         FoodProperties soupEffects = FoodValues.VANILLA_SOUP_EFFECTS.get(food);
 
-        if(soupEffects != null) {
+        if (soupEffects != null) {
             List<String> tooltip = event.getToolTip();
             soupEffects.effects.forEach(foodEffect -> {
-                if(foodEffect.getEffect().getDuration() > 20) {
+                if (foodEffect.getEffect().getDuration() > 20) {
                     tooltip.add(StringHelper.getEffectTooltipString(foodEffect.getEffect()));
                 }
             });

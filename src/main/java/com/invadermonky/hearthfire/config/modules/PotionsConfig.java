@@ -11,7 +11,7 @@ public class PotionsConfig {
         public boolean requires_hearth = false;
 
         @Config.Comment("The id of any beds")
-        public String[] beds = new String[] {
+        public String[] beds = new String[]{
                 "minecraft:bed"
         };
     }
@@ -24,7 +24,7 @@ public class PotionsConfig {
         public boolean safeguard_lava = true;
 
         @Config.Comment("List of potion ids that will be removed by the Safeguarded hearth effect.")
-        public String[] safeguard_potions = new String[] {
+        public String[] safeguard_potions = new String[]{
                 "minecraft:hunger",
                 "minecraft:poison",
                 "minecraft:wither"

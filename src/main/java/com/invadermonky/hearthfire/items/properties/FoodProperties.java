@@ -31,8 +31,10 @@ public class FoodProperties {
         this.effects = builder.effects;
         this.craftingRemainder = builder.craftingRemainder;
     }
+
     //TODO: Change this to an abstract builder like the one in Pickup Limits.
     public static class FoodBuilder<T extends FoodBuilder<T>> {
+        protected final List<FoodEffect> effects;
         protected int nutrition;
         protected float saturationModifier;
         protected boolean isWolfFood;
@@ -40,7 +42,6 @@ public class FoodProperties {
         protected boolean canAlwaysEat;
         protected boolean fastFood;
         protected boolean hasCustomTooltip;
-        protected final List<FoodEffect> effects;
         protected ItemStack craftingRemainder;
 
         public FoodBuilder() {
@@ -55,7 +56,7 @@ public class FoodProperties {
          */
         public T nutrition(int nutrition) {
             this.nutrition = nutrition;
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -63,7 +64,7 @@ public class FoodProperties {
          */
         public T saturationMod(float saturationModifier) {
             this.saturationModifier = saturationModifier;
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -71,7 +72,7 @@ public class FoodProperties {
          */
         public T isMeat() {
             this.isWolfFood = true;
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -87,7 +88,7 @@ public class FoodProperties {
          */
         public T alwaysEat() {
             this.canAlwaysEat = true;
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -95,7 +96,7 @@ public class FoodProperties {
          */
         public T fast() {
             this.fastFood = true;
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -103,7 +104,7 @@ public class FoodProperties {
          */
         public T effect(FoodEffect foodEffect) {
             effects.add(foodEffect);
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -111,7 +112,7 @@ public class FoodProperties {
          */
         public T craftingRemainder(ItemStack remainder) {
             this.craftingRemainder = remainder;
-            return (T)this;
+            return (T) this;
         }
 
         /**
@@ -126,7 +127,7 @@ public class FoodProperties {
          */
         public T hasCustomTooltip() {
             this.hasCustomTooltip = true;
-            return (T)this;
+            return (T) this;
         }
 
         public FoodProperties build() {

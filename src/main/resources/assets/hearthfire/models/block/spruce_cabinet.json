@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "hearthfire:block/spruce_cabinet_front",
-    "side": "hearthfire:block/spruce_cabinet_side",
-    "top": "hearthfire:block/spruce_cabinet_top"
-  }
-}

@@ -52,25 +52,25 @@ public class ModSoundsHF {
         sounds.add(BLOCK_STOVE_CRACKLE = makeSoundEvent("block.stove.crackle"));
 
         //Cooking Pot
-		sounds.add(BLOCK_COOKING_POT_BOIL = makeSoundEvent("block.cooking_pot.boil"));
-		sounds.add(BLOCK_COOKING_POT_BOIL_SOUP = makeSoundEvent("block.cooking_pot.boil_soup"));
+        sounds.add(BLOCK_COOKING_POT_BOIL = makeSoundEvent("block.cooking_pot.boil"));
+        sounds.add(BLOCK_COOKING_POT_BOIL_SOUP = makeSoundEvent("block.cooking_pot.boil_soup"));
 
         //Cutting Board
-		sounds.add(BLOCK_CUTTING_BOARD_KNIFE = makeSoundEvent("block.cutting_board.knife"));
+        sounds.add(BLOCK_CUTTING_BOARD_KNIFE = makeSoundEvent("block.cutting_board.knife"));
 
         //Cabinet
-		sounds.add(BLOCK_CABINET_OPEN = makeSoundEvent("block.cabinet.open"));
-		sounds.add(BLOCK_CABINET_CLOSE = makeSoundEvent("block.cabinet.close"));
+        sounds.add(BLOCK_CABINET_OPEN = makeSoundEvent("block.cabinet.open"));
+        sounds.add(BLOCK_CABINET_CLOSE = makeSoundEvent("block.cabinet.close"));
 
         //Skillet
-		sounds.add(BLOCK_SKILLET_SIZZLE = makeSoundEvent("block.skillet.sizzle"));
-		sounds.add(BLOCK_SKILLET_ADD_FOOD = makeSoundEvent("block.skillet.add_food"));
-		sounds.add(ITEM_SKILLET_ATTACK_STRONG = makeSoundEvent("item.skillet.attack.strong"));
-		sounds.add(ITEM_SKILLET_ATTACK_WEAK = makeSoundEvent("item.skillet.attack.weak"));
+        sounds.add(BLOCK_SKILLET_SIZZLE = makeSoundEvent("block.skillet.sizzle"));
+        sounds.add(BLOCK_SKILLET_ADD_FOOD = makeSoundEvent("block.skillet.add_food"));
+        sounds.add(ITEM_SKILLET_ATTACK_STRONG = makeSoundEvent("item.skillet.attack.strong"));
+        sounds.add(ITEM_SKILLET_ATTACK_WEAK = makeSoundEvent("item.skillet.attack.weak"));
 
         //Tomato Bush
-		sounds.add(ITEM_TOMATO_PICK_FROM_BUSH = makeSoundEvent("block.tomato_bush.pick_tomatoes"));
-		sounds.add(ENTITY_ROTTEN_TOMATO_THROW = makeSoundEvent("entity.rotten_tomato.throw"));
-		sounds.add(ENTITY_ROTTEN_TOMATO_HIT = makeSoundEvent("entity.rotten_tomato.hit"));
+        sounds.add(ITEM_TOMATO_PICK_FROM_BUSH = makeSoundEvent("block.tomato_bush.pick_tomatoes"));
+        sounds.add(ENTITY_ROTTEN_TOMATO_THROW = makeSoundEvent("entity.rotten_tomato.throw"));
+        sounds.add(ENTITY_ROTTEN_TOMATO_HIT = makeSoundEvent("entity.rotten_tomato.hit"));
     }
 }

@@ -1,12 +1,12 @@
 package com.invadermonky.hearthfire.events;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.registry.ModItemsHF;
+import com.invadermonky.hearthfire.effects.EffectRested;
+import com.invadermonky.hearthfire.effects.EffectSafeguarded;
 import com.invadermonky.hearthfire.items.ItemDogFood;
 import com.invadermonky.hearthfire.items.ItemKnife;
 import com.invadermonky.hearthfire.libs.ModTags;
-import com.invadermonky.hearthfire.effects.EffectRested;
-import com.invadermonky.hearthfire.effects.EffectSafeguarded;
+import com.invadermonky.hearthfire.registry.ModItemsHF;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.passive.EntityHorse;
@@ -34,7 +34,7 @@ public class CommonEvents {
     public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
         //TODO: Change this so the HorseFeedBuilder can set whether the item will tempt horses.
         //TODO: Horse food doesn't work on donkeys and mules. Swap to AbstractHorse?
-        if(event.getEntity() instanceof EntityHorse) {
+        if (event.getEntity() instanceof EntityHorse) {
             //TODO: Connect this to the horse feed builder so it can be looped instead of the current manually add method.
             EntityHorse horse = (EntityHorse) event.getEntity();
             horse.tasks.addTask(3, new EntityAITempt(horse, 1.25D, ModItemsHF.HORSE_FEED, false));
@@ -42,7 +42,7 @@ public class CommonEvents {
         }
 
         //TODO: If entity is player, add them to the map.
-        if(event.getEntity() instanceof EntityPlayer) {
+        if (event.getEntity() instanceof EntityPlayer) {
 
         }
     }
@@ -83,14 +83,14 @@ public class CommonEvents {
      */
     @SubscribeEvent
     public static void onPlayerSleep(PlayerSleepInBedEvent event) {
-        if(event.getEntityPlayer().world.isRemote || event.getResult() != Event.Result.DEFAULT)
+        if (event.getEntityPlayer().world.isRemote || event.getResult() != Event.Result.DEFAULT)
             return;
 
         EntityPlayer player = event.getEntityPlayer();
         World world = player.world;
         IBlockState bedState = world.getBlockState(event.getPos());
 
-        if(ModTags.tagContains(ModTags.BEDS, bedState)) {
+        if (ModTags.tagContains(ModTags.BEDS, bedState)) {
             //TODO: Populate map
         }
     }
@@ -100,7 +100,7 @@ public class CommonEvents {
      */
     @SubscribeEvent
     public static void onPlayerWake(PlayerWakeUpEvent event) {
-        if(event.getEntityPlayer().world.isRemote)
+        if (event.getEntityPlayer().world.isRemote)
             return;
 
         EntityPlayer player = event.getEntityPlayer();

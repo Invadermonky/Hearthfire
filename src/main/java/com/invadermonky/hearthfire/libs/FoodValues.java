@@ -1,9 +1,9 @@
 package com.invadermonky.hearthfire.libs;
 
 import com.google.common.collect.ImmutableMap;
-import com.invadermonky.hearthfire.registry.ModPotionsHF;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
 import com.invadermonky.hearthfire.items.properties.FoodProperties;
+import com.invadermonky.hearthfire.items.util.FoodEffect;
+import com.invadermonky.hearthfire.registry.ModPotionsHF;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ public class FoodValues {
     public static final int LONG_DURATION = 6000;   // 5 minutes
 
     //TODO: Farmer's Delight deafult food. Will remove/modify these.
-    
+
     // Raw Crops
     public static final FoodProperties CABBAGE = (new FoodProperties.FoodBuilder<>())
             .nutrition(2).saturationMod(0.4f).build();
@@ -75,7 +75,7 @@ public class FoodValues {
             .nutrition(5).saturationMod(0.3f).isMeat().build();
     public static final FoodProperties SMOKED_HAM = (new FoodProperties.FoodBuilder<>())
             .nutrition(10).saturationMod(0.8f).isMeat().build();
-    
+
     //Sweets
     public static final FoodProperties POPSICLE = (new FoodProperties.FoodBuilder<>())
             .nutrition(3).saturationMod(0.2f).fast().alwaysEat().build();

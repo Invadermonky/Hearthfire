@@ -39,14 +39,14 @@ public class ModTags {
         COMPOST_ACTIVATORS = new THashSet<>(Sets.newHashSet(ConfigHandlerHF.integrations.compost_activators));
         KNIFE_ITEMS = new THashSet<>(Sets.newHashSet(ConfigHandlerHF.integrations.knife_items));
         SAFEGUARDED_POTIONS = new THashSet<>(ConfigHandlerHF.potion_config.safeguarded.safeguard_potions.length);
-        for(String id : ConfigHandlerHF.potion_config.safeguarded.safeguard_potions) {
+        for (String id : ConfigHandlerHF.potion_config.safeguarded.safeguard_potions) {
             Potion p = Potion.getPotionFromResourceLocation(id);
-            if(p != null) {
+            if (p != null) {
                 SAFEGUARDED_POTIONS.add(p);
             }
         }
     }
-    
+
     static {
         KNIFE_VALID_ENCHANTS = new THashSet<>(Sets.newHashSet(
                 Enchantments.SHARPNESS,

@@ -2,7 +2,7 @@ package com.invadermonky.hearthfire;
 
 import com.invadermonky.hearthfire.libs.ModTags;
 import com.invadermonky.hearthfire.proxy.CommonProxy;
-import com.invadermonky.hearthfire.util.LogHelper;
+import com.invadermonky.hearthfire.util.helpers.LogHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -19,9 +19,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 )
 public class Hearthfire {
     //TODO: Move all the stuff into their respective modules.
-    public static final String MOD_ID = "hearthfire";
-    public static final String MOD_NAME = "Hearthfire";
-    public static final String VERSION = "1.12.2-0.1.0";
+    public static final String MOD_ID = Tags.MOD_ID;
+    public static final String MOD_NAME = Tags.MOD_NAME;
+    public static final String VERSION = "0.1.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES = "";
 
@@ -29,7 +29,7 @@ public class Hearthfire {
     public static final String ProxyServerClass = "com.invadermonky." + MOD_ID + ".proxy.CommonProxy";
 
     @Mod.Instance(MOD_ID)
-    public Hearthfire instance;
+    public static Hearthfire instance;
 
     @SidedProxy(clientSide = ProxyClientClass, serverSide = ProxyServerClass)
     public static CommonProxy proxy;

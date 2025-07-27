@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.effects;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.util.StringHelper;
+import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -19,15 +19,15 @@ public class EffectComfort extends AbstractPotionHF {
     @Override
     public void performEffect(EntityLivingBase entity, int amplifier) {
         assert MobEffects.REGENERATION != null;
-        if(entity.isPotionActive(MobEffects.REGENERATION)) {
+        if (entity.isPotionActive(MobEffects.REGENERATION)) {
             return;
         }
-        if(entity instanceof EntityPlayer) {
-            if(((EntityPlayer) entity).getFoodStats().getSaturationLevel() > 0) {
+        if (entity instanceof EntityPlayer) {
+            if (((EntityPlayer) entity).getFoodStats().getSaturationLevel() > 0) {
                 return;
             }
         }
-        if(entity.getHealth() > 0 && entity.getHealth() < entity.getMaxHealth()) {
+        if (entity.getHealth() > 0 && entity.getHealth() < entity.getMaxHealth()) {
             entity.heal(1.0f);
         }
     }

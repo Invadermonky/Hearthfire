@@ -1,9 +1,0 @@
-{
-  "parent": "hearthfire:block/crop_with_rope",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "crop": "hearthfire:block/tomatoes_vine_stage2",
-    "rope_side": "hearthfire:block/tomatoes_coiled_rope",
-    "rope_top": "hearthfire:block/rope_top"
-  }
-}

@@ -1,9 +1,9 @@
 package com.invadermonky.hearthfire.items;
 
 import com.invadermonky.hearthfire.config.ConfigHandlerHF;
-import com.invadermonky.hearthfire.items.util.AttributeBoost;
 import com.invadermonky.hearthfire.items.properties.HorseFeedProperties;
-import com.invadermonky.hearthfire.util.StringHelper;
+import com.invadermonky.hearthfire.items.util.AttributeBoost;
+import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,10 +34,10 @@ public class ItemHorseFeed extends Item {
 
     protected boolean upgradeHorse(World world, EntityLivingBase entity) {
         boolean upgraded = false;
-        for(AttributeBoost attributeBoost : properties.attributeBoosts) {
-            if(world.rand.nextFloat() <= attributeBoost.boostChance) {
+        for (AttributeBoost attributeBoost : properties.attributeBoosts) {
+            if (world.rand.nextFloat() <= attributeBoost.boostChance) {
                 IAttributeInstance instance = entity.getEntityAttribute(attributeBoost.attribute);
-                if(instance != null) {
+                if (instance != null) {
                     attributeBoost.boostAttribute(instance);
                     upgraded = true;
                 }
@@ -51,16 +51,16 @@ public class ItemHorseFeed extends Item {
         //TODO: shift this into an event handler maybe?
         World world = player.world;
 
-        if(target instanceof EntityHorse) {
-            if(target.isEntityAlive() && ((EntityHorse) target).isTame()) {
+        if (target instanceof EntityHorse) {
+            if (target.isEntityAlive() && ((EntityHorse) target).isTame()) {
                 //Full Heal Horse
-                if(properties.fullHealHorse) {
+                if (properties.fullHealHorse) {
                     target.heal(target.getMaxHealth());
                 }
 
                 //Upgrade Horse
-                if(!properties.attributeBoosts.isEmpty() && upgradeHorse(world, target)) {
-                    for(int i = 0; i < 8; i++) {
+                if (!properties.attributeBoosts.isEmpty() && upgradeHorse(world, target)) {
+                    for (int i = 0; i < 8; i++) {
                         double x = target.posX + (2.0 * world.rand.nextDouble() - 1.0);
                         double y = target.posY + (2.0 * world.rand.nextDouble() - 1.0) + 1.0;
                         double z = target.posZ + (2.0 * world.rand.nextDouble() - 1.0);
@@ -74,13 +74,13 @@ public class ItemHorseFeed extends Item {
 
                 //Apply potion effects
                 properties.effects.forEach(foodEffect -> {
-                    if(world.rand.nextFloat() <= foodEffect.getChance()) {
+                    if (world.rand.nextFloat() <= foodEffect.getChance()) {
                         target.addPotionEffect(foodEffect.getEffect());
                     }
                 });
                 player.world.playSound(null, target.getPosition(), SoundEvents.ENTITY_HORSE_EAT, SoundCategory.PLAYERS, 0.8f, 0.8f);
 
-                for(int i = 0; i < 5; i++) {
+                for (int i = 0; i < 5; i++) {
                     double x = target.posX + (2.0 * world.rand.nextDouble() - 1.0);
                     double y = target.posY + (2.0 * world.rand.nextDouble() - 1.0) + 1.0;
                     double z = target.posZ + (2.0 * world.rand.nextDouble() - 1.0);
@@ -91,7 +91,7 @@ public class ItemHorseFeed extends Item {
                     world.spawnParticle(EnumParticleTypes.HEART, x, y, z, d0, d1, d2);
                 }
 
-                if(!player.isCreative()) {
+                if (!player.isCreative()) {
                     stack.shrink(1);
                 }
                 return true;
@@ -103,7 +103,7 @@ public class ItemHorseFeed extends Item {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        if(!ConfigHandlerHF.client_config.foodEffectTooltip)
+        if (!ConfigHandlerHF.client_config.foodEffectTooltip)
             return;
 
         if (properties.hasCustomTooltip) {
@@ -111,7 +111,7 @@ public class ItemHorseFeed extends Item {
         }
         tooltip.add(I18n.format(TextFormatting.GRAY + I18n.format(StringHelper.getTranslationKey("horse_feed", "tooltip", "when_feeding"))));
         properties.effects.forEach(foodEffect -> {
-            if(foodEffect.getChance() >= 1.0f) {
+            if (foodEffect.getChance() >= 1.0f) {
                 tooltip.add(StringHelper.getEffectTooltipString(foodEffect));
             }
         });

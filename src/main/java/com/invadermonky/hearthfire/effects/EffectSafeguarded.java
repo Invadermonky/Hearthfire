@@ -2,9 +2,9 @@ package com.invadermonky.hearthfire.effects;
 
 import com.invadermonky.hearthfire.Hearthfire;
 import com.invadermonky.hearthfire.config.ConfigHandlerHF;
-import com.invadermonky.hearthfire.registry.ModPotionsHF;
 import com.invadermonky.hearthfire.libs.ModTags;
-import com.invadermonky.hearthfire.util.StringHelper;
+import com.invadermonky.hearthfire.registry.ModPotionsHF;
+import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,35 +31,6 @@ public class EffectSafeguarded extends AbstractPotionHF {
         setPotionName(StringHelper.getTranslationKey("safeguarded", "effect"));
     }
 
-    @Override
-    public void performEffect(EntityLivingBase entity, int amplifier) {
-        if(entity instanceof EntityPlayer && ((EntityPlayer) entity).isCreative())
-            return;
-
-        for(Potion potion : ModTags.SAFEGUARDED_POTIONS) {
-            if(entity.isPotionActive(potion)) {
-                entity.removePotionEffect(potion);
-                removeSafeguarded(entity);
-                return;
-            }
-        }
-
-        if(!entity.isPotionActive(MobEffects.FIRE_RESISTANCE) && !entity.isImmuneToFire()) {
-            if(!entity.isInLava()) {
-                if(ConfigHandlerHF.potion_config.safeguarded.safeguard_fire && entity.isBurning()) {
-                    entity.extinguish();
-                    removeSafeguarded(entity);
-                }
-            }
-        }
-    }
-
-    @Override
-    public boolean isReady(int duration, int amplifier) {
-        //Safeguarded removal effect activates every 1.5 seconds. The entity will still take damage before the effect applies.
-        return duration % 30 == 0;
-    }
-
     public static boolean isSafeguardedActive(EntityLivingBase entity) {
         return isSafeguardedActive(entity, 0);
     }
@@ -74,10 +45,10 @@ public class EffectSafeguarded extends AbstractPotionHF {
 
     public static void removeSafeguarded(EntityLivingBase entity, int removeAmount) {
         PotionEffect activeEffect = entity.getActivePotionEffect(ModPotionsHF.SAFEGUARDED);
-        if(activeEffect != null) {
+        if (activeEffect != null) {
             //TODO: maybe add a status message "The memory of home has protected you from a threat." or "The memory of home has protected you from a greater threat."
             entity.removePotionEffect(ModPotionsHF.SAFEGUARDED);
-            if(activeEffect.getAmplifier() - removeAmount >= 0) {
+            if (activeEffect.getAmplifier() - removeAmount >= 0) {
                 PotionEffect newEffect = new PotionEffect(ModPotionsHF.SAFEGUARDED, activeEffect.getDuration(), Math.max(0, activeEffect.getAmplifier() - removeAmount));
                 entity.addPotionEffect(newEffect);
             }
@@ -85,7 +56,7 @@ public class EffectSafeguarded extends AbstractPotionHF {
     }
 
     public static void handleSafeguardedExplosion(ExplosionEvent.Start event) {
-        if(event.getWorld().isRemote)
+        if (event.getWorld().isRemote)
             return;
 
         World world = event.getWorld();
@@ -101,7 +72,7 @@ public class EffectSafeguarded extends AbstractPotionHF {
 
         List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
         entities.forEach(entity -> {
-            if(entity instanceof EntityLivingBase && EffectSafeguarded.isSafeguardedActive((EntityLivingBase) entity, 1)) {
+            if (entity instanceof EntityLivingBase && EffectSafeguarded.isSafeguardedActive((EntityLivingBase) entity, 1)) {
                 //TODO: Explosion absorb sound.
                 //  world.playSound(null, explosionPos.x, explosionPos.y, explosionPos.z, ModSoundsHF.EXPLOSION_ABSORB, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 //TODO: Explosion absorb effect.
@@ -112,13 +83,42 @@ public class EffectSafeguarded extends AbstractPotionHF {
     }
 
     public static void handleSafeguardedDamage(LivingDamageEvent event) {
-        if(event.getEntity().world.isRemote && event.getSource() != DamageSource.LAVA)
+        if (event.getEntity().world.isRemote && event.getSource() != DamageSource.LAVA)
             return;
 
         EntityLivingBase entity = event.getEntityLiving();
-        if(ConfigHandlerHF.potion_config.safeguarded.safeguard_lava && EffectSafeguarded.isSafeguardedActive(entity, 1)) {
+        if (ConfigHandlerHF.potion_config.safeguarded.safeguard_lava && EffectSafeguarded.isSafeguardedActive(entity, 1)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 200));
             removeSafeguarded(entity, 2);
         }
+    }
+
+    @Override
+    public void performEffect(EntityLivingBase entity, int amplifier) {
+        if (entity instanceof EntityPlayer && ((EntityPlayer) entity).isCreative())
+            return;
+
+        for (Potion potion : ModTags.SAFEGUARDED_POTIONS) {
+            if (entity.isPotionActive(potion)) {
+                entity.removePotionEffect(potion);
+                removeSafeguarded(entity);
+                return;
+            }
+        }
+
+        if (!entity.isPotionActive(MobEffects.FIRE_RESISTANCE) && !entity.isImmuneToFire()) {
+            if (!entity.isInLava()) {
+                if (ConfigHandlerHF.potion_config.safeguarded.safeguard_fire && entity.isBurning()) {
+                    entity.extinguish();
+                    removeSafeguarded(entity);
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean isReady(int duration, int amplifier) {
+        //Safeguarded removal effect activates every 1.5 seconds. The entity will still take damage before the effect applies.
+        return duration % 30 == 0;
     }
 }

@@ -2,7 +2,7 @@ package com.invadermonky.hearthfire.effects;
 
 import com.invadermonky.hearthfire.Hearthfire;
 import com.invadermonky.hearthfire.registry.ModPotionsHF;
-import com.invadermonky.hearthfire.util.StringHelper;
+import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.player.PlayerPickupXpEvent;
@@ -17,15 +17,15 @@ public class EffectRested extends AbstractPotionHF {
     }
 
     public static void restedXpHandler(PlayerPickupXpEvent event) {
-        if(event.getEntity().world.isRemote)
+        if (event.getEntity().world.isRemote)
             return;
 
         EntityPlayer player = event.getEntityPlayer();
-        if(player != null && player.isPotionActive(ModPotionsHF.RESTED)) {
+        if (player != null && player.isPotionActive(ModPotionsHF.RESTED)) {
             int x = event.getOrb().xpValue * 11;
             int a = x / 10;
             int r = x % 10;
-            if(r > 0 && player.world.rand.nextInt(10) < r) {
+            if (r > 0 && player.world.rand.nextInt(10) < r) {
                 a++;
             }
             event.getOrb().xpValue = a;

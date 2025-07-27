@@ -18,6 +18,6 @@ public class FoodConfig {
         @Comment("Enables vanilla soups to stack to 16, like soups and stews from this mod.")
         public boolean enableStackableVanillaSoups = true;
         @Comment("List of soups and stews that should stack.")
-        public String[] stackableFoodWhitelist = new String[] {"minecraft:mushroom_stew", "minecraft:beetroot_soup", "minecraft:rabbit_stew"};
+        public String[] stackableFoodWhitelist = new String[]{"minecraft:mushroom_stew", "minecraft:beetroot_soup", "minecraft:rabbit_stew"};
     }
 }
