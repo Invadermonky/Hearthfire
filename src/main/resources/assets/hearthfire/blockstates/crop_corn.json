@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "age=0,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage0"} ,
+    "age=1,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage1"} ,
+    "age=2,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage2"} ,
+    "age=3,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage3"} ,
+    "age=4,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage4"} ,
+    "age=5,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage5"} ,
+    "age=6,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage6"} ,
+    "age=7,part=bottom": {"model": "hearthfire:crop_corn_bottom_stage7"} ,
+    "age=0,part=top": {"model": "hearthfire:crop_corn_top_stage0"} ,
+    "age=1,part=top": {"model": "hearthfire:crop_corn_top_stage1"} ,
+    "age=2,part=top": {"model": "hearthfire:crop_corn_top_stage2"} ,
+    "age=3,part=top": {"model": "hearthfire:crop_corn_top_stage3"} ,
+    "age=4,part=top": {"model": "hearthfire:crop_corn_top_stage4"} ,
+    "age=5,part=top": {"model": "hearthfire:crop_corn_top_stage5"} ,
+    "age=6,part=top": {"model": "hearthfire:crop_corn_top_stage6"} ,
+    "age=7,part=top": {"model": "hearthfire:crop_corn_top_stage7"}
+  }
+}
+  
