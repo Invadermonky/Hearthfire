@@ -49,7 +49,7 @@ public class ItemSeedFoodHF extends ItemSeedFood implements IBlockAssociation {
     }
 
     public ItemSeedFoodHF(String unlocName, SeedFoodProperties properties) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, properties);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
 
@@ -128,8 +128,8 @@ public class ItemSeedFoodHF extends ItemSeedFood implements IBlockAssociation {
     @Override
     public void registerBlockAssociation() {
         if (this.properties.cropBlock instanceof BlockCropHF) {
-            ((BlockCropHF) this.properties.cropBlock).setSeed(this);
-            ((BlockCropHF) this.properties.cropBlock).setCrop(this);
+            //((BlockCropHF) this.properties.cropBlock).setSeed(this);
+            //((BlockCropHF) this.properties.cropBlock).setCrop(this);
         }
     }
 

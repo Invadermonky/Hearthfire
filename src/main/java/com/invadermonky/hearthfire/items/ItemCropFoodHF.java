@@ -22,7 +22,7 @@ public class ItemCropFoodHF extends AbstractItemFoodHF<CropFoodProperties> imple
     @Override
     public void registerBlockAssociation() {
         if (this.getProperties().cropBlock instanceof BlockCropHF) {
-            ((BlockCropHF) this.getProperties().cropBlock).setCrop(this);
+            //((BlockCropHF) this.getProperties().cropBlock).setCrop(this);
         }
     }
 }

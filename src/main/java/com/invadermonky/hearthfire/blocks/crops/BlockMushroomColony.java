@@ -55,7 +55,7 @@ public class BlockMushroomColony extends BlockBush implements IGrowable {
 
     /** Internal constructor. Used only for Hearthfire blocks. */
     public BlockMushroomColony(String unlocName, Block mushroomType) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, mushroomType);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, mushroomType);
     }
 
     @Override

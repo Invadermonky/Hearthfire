@@ -2,11 +2,11 @@ package com.invadermonky.hearthfire.blocks.crops;
 
 import com.invadermonky.hearthfire.Hearthfire;
 import com.invadermonky.hearthfire.api.blocks.ICustomItemModel;
+import com.invadermonky.hearthfire.api.blocks.properties.CropProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -14,29 +14,26 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
 public class BlockCropHF extends BlockCrops implements ICustomItemModel {
+    protected CropProperties properties;
     protected boolean dropOnlyCrops;
-    protected Item cropItem;
-    protected Item seedItem;
 
-    public BlockCropHF(String unlocName, String modId, CreativeTabs creativeTab) {
+    public BlockCropHF(String unlocName, String modId, CreativeTabs creativeTab, CropProperties properties) {
         this.setRegistryName(modId, unlocName);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(creativeTab);
+        this.properties = properties;
         this.dropOnlyCrops = false;
-        this.cropItem = Items.AIR;
-        this.seedItem = Items.AIR;
     }
 
     /** Internal constructor. Used only for Hearthfire blocks. */
-    public BlockCropHF(String unlocName) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME);
+    public BlockCropHF(String unlocName, CropProperties properties) {
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
     public BlockCropHF setDropOnlyCrops() {
@@ -50,21 +47,13 @@ public class BlockCropHF extends BlockCrops implements ICustomItemModel {
     }
 
     @Override
-    protected @NotNull Item getSeed() {
-        return this.seedItem;
-    }
-
-    public <T extends Item & IPlantable> void setSeed(T seedItem) {
-        this.seedItem = seedItem;
+    public @NotNull Item getSeed() {
+        return this.properties.getSeed();
     }
 
     @Override
-    protected @NotNull Item getCrop() {
-        return this.cropItem;
-    }
-
-    public void setCrop(Item cropItem) {
-        this.cropItem = cropItem;
+    public @NotNull Item getCrop() {
+        return this.properties.getCrop();
     }
 
     @Override

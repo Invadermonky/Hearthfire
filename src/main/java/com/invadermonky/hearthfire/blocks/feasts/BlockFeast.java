@@ -5,13 +5,10 @@ import com.invadermonky.hearthfire.api.blocks.properties.FeastProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 public class BlockFeast extends AbstractBlockFeast<FeastProperties> {
 
@@ -20,7 +17,7 @@ public class BlockFeast extends AbstractBlockFeast<FeastProperties> {
     }
 
     public BlockFeast(String unlocName, FeastProperties properties) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, properties);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
     @Override
@@ -32,19 +29,10 @@ public class BlockFeast extends AbstractBlockFeast<FeastProperties> {
     protected void consumeServing(World world, BlockPos pos, IBlockState state) {
         int servings = this.getRemainingServings(state);
         if (servings > 1) {
-            world.setBlockState(pos, state.withProperty(SERVINGS, servings + 1), 3);
+            servings--;
+            world.setBlockState(pos, state.withProperty(SERVINGS, this.getMaxServings() - servings), 3);
         } else {
             world.setBlockToAir(pos);
         }
-    }
-
-    @Override
-    public void registerBlockItem(IForgeRegistry<Item> registry) {
-
-    }
-
-    @Override
-    public void registerBlockItemModel(ModelRegistryEvent event) {
-
     }
 }

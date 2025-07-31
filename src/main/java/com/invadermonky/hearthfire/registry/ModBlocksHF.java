@@ -7,6 +7,9 @@ import com.invadermonky.hearthfire.blocks.crops.BlockCropHF;
 import com.invadermonky.hearthfire.blocks.crops.BlockDoubleCrop;
 import com.invadermonky.hearthfire.blocks.crops.BlockMushroomColony;
 import com.invadermonky.hearthfire.blocks.feasts.BlockEmptyPlate;
+import com.invadermonky.hearthfire.blocks.feasts.BlockFeast;
+import com.invadermonky.hearthfire.blocks.feasts.BlockPlatedFeast;
+import com.invadermonky.hearthfire.util.libs.BlockPropertiesHF;
 import com.invadermonky.hearthfire.util.libs.LootTablesHF;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -56,6 +59,9 @@ public class ModBlocksHF {
 
     //Feasts
     public static final BlockEmptyPlate EMPTY_PLATE = null;
+    public static final BlockFeast FEAST_PIZZA = null;
+    public static final BlockPlatedFeast FEAST_ROASTED_CHICKEN = null;
+    public static final BlockPlatedFeast FEAST_PORK_ROAST = null;
 
 
     private static final List<Block> modBlocks = new ArrayList<>();
@@ -101,23 +107,26 @@ public class ModBlocksHF {
         addBlockToRegister(new BlockRichFarmland("rich_soil_farmland"));
 
         //Wild Crops
-        addBlockToRegister(new BlockSandyShrub("sandy_shrub", LootTablesHF.SANDY_SHRUB));
-        addBlockToRegister(new BlockWildCrop("wild_cabbages", LootTablesHF.WILD_CABBAGE));
-        addBlockToRegister(new BlockWildCrop("wild_corn", LootTablesHF.WILD_CORN));
-        addBlockToRegister(new BlockWildCrop("wild_onions", LootTablesHF.WILD_ONION));
-        addBlockToRegister(new BlockWildCrop("wild_tomatoes", LootTablesHF.WILD_TOMATO));
-        addBlockToRegister(new BlockWildCrop("wild_carrots", LootTablesHF.WILD_CARROT));
-        addBlockToRegister(new BlockWildCrop("wild_potatoes", LootTablesHF.WILD_POTATO));
-        addBlockToRegister(new BlockWildCrop("wild_beetroots", LootTablesHF.WILD_BEETROOT));
+        addBlockToRegister(new BlockSandyShrub("sandy_shrub", BlockPropertiesHF.PROPS_CROP_CABBAGE));//TODO: Rice wild crop.
+        addBlockToRegister(new BlockWildCrop("wild_cabbages", BlockPropertiesHF.PROPS_CROP_CABBAGE));
+        addBlockToRegister(new BlockWildCrop("wild_corn", BlockPropertiesHF.PROPS_CROP_CORN));
+        addBlockToRegister(new BlockWildCrop("wild_onions", BlockPropertiesHF.PROPS_CROP_ONION));
+        addBlockToRegister(new BlockWildCrop("wild_tomatoes", BlockPropertiesHF.PROPS_CROP_TOMATO));
+        addBlockToRegister(new BlockWildCrop("wild_carrots", BlockPropertiesHF.PROPS_CROP_CARROT));
+        addBlockToRegister(new BlockWildCrop("wild_potatoes", BlockPropertiesHF.PROPS_CROP_POTATO));
+        addBlockToRegister(new BlockWildCrop("wild_beetroots", BlockPropertiesHF.PROPS_CROP_BEETROOT));
 
         //Crops
-        addBlockToRegister(new BlockCropHF("crop_cabbage"));
-        addBlockToRegister(new BlockDoubleCrop("crop_corn").setDropOnlyCrops());
-        addBlockToRegister(new BlockCropHF("crop_onion"));
-        //addBlockToRegister(CROP_TOMATO = new BlockCropHF("crop_tomato", ModItemsHF.TOMATO, ModItemsHF.SEEDS_TOMATO));
+        addBlockToRegister(new BlockCropHF("crop_cabbage", BlockPropertiesHF.PROPS_CROP_CABBAGE));
+        addBlockToRegister(new BlockDoubleCrop("crop_corn", BlockPropertiesHF.PROPS_CROP_CORN).setDropOnlyCrops());
+        addBlockToRegister(new BlockCropHF("crop_onion", BlockPropertiesHF.PROPS_CROP_ONION));
+        //addBlockToRegister(new BlockCropHF("crop_tomato"));
 
         //Feasts
         //addBlockToRegister(new BlockEmptyPlate("empty_plate"));
+        addBlockToRegister(new BlockFeast("feast_pizza", BlockPropertiesHF.PROPS_FEAST_PIZZA));
+        addBlockToRegister(new BlockPlatedFeast("feast_roasted_chicken", BlockPropertiesHF.PROPS_FEAST_POULTRY));
+        addBlockToRegister(new BlockPlatedFeast("feast_pork_roast", BlockPropertiesHF.PROPS_FEAST_ROAST));
 
     }
 }

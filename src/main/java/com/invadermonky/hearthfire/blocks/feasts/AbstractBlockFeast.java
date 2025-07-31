@@ -1,7 +1,6 @@
 package com.invadermonky.hearthfire.blocks.feasts;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.ICustomItemModel;
 import com.invadermonky.hearthfire.api.blocks.properties.base.AbstractFeastProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.config.ConfigTags;
@@ -31,10 +30,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>> extends Block implements ICustomItemModel {
+public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>> extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyInteger SERVINGS = PropertyInteger.create("servings", 0, 3);
-
 
     private final T properties;
     private ItemStack feastItem;
@@ -51,7 +49,7 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     }
 
     public AbstractBlockFeast(String unlocName, T properties) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, properties);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
     public T getProperties() {
@@ -74,6 +72,7 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
         if (!player.addItemStackToInventory(harvested)) {
             player.dropItem(harvested, true);
         }
+        this.consumeServing(world, pos, state);
         return true;
     }
 
@@ -92,36 +91,37 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     }
 
     protected boolean handleDirectInteract(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-        if (!player.canEat(false)) {
-            return false;
-        } else {
+        //TODO: Cake chomp and break particles
+        if (player.canEat(false) || player.isCreative()) {
             ItemStack feastItem = this.getFeastItem();
             feastItem.getItem().onItemUseFinish(feastItem, world, player);
             this.consumeServing(world, pos, state);
+            return true;
         }
-        return true;
+        return false;
     }
 
     protected abstract void consumeServing(World world, BlockPos pos, IBlockState state);
 
-    public IBlockState getDefaultFacing(World world, BlockPos pos, IBlockState state) {
-        IBlockState iblockstate = world.getBlockState(pos.north());
-        IBlockState iblockstate1 = world.getBlockState(pos.south());
-        IBlockState iblockstate2 = world.getBlockState(pos.west());
-        IBlockState iblockstate3 = world.getBlockState(pos.east());
-        EnumFacing enumfacing = state.getValue(FACING);
+    public void setDefaultFacing(World world, BlockPos pos, IBlockState state) {
+        if (!world.isRemote) {
+            IBlockState iblockstate = world.getBlockState(pos.north());
+            IBlockState iblockstate1 = world.getBlockState(pos.south());
+            IBlockState iblockstate2 = world.getBlockState(pos.west());
+            IBlockState iblockstate3 = world.getBlockState(pos.east());
+            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
 
-        if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
-            enumfacing = EnumFacing.SOUTH;
-        } else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
-            enumfacing = EnumFacing.NORTH;
-        } else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock()) {
-            enumfacing = EnumFacing.EAST;
-        } else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
-            enumfacing = EnumFacing.WEST;
+            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
+                enumfacing = EnumFacing.SOUTH;
+            } else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
+                enumfacing = EnumFacing.NORTH;
+            } else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock()) {
+                enumfacing = EnumFacing.EAST;
+            } else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
+                enumfacing = EnumFacing.WEST;
+            }
+            world.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
         }
-
-        return state.withProperty(FACING, enumfacing);
     }
 
     @Override
@@ -165,7 +165,8 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (this.getFeastItem().isEmpty()) {
             LogHelper.error("Failed interaction with " + this.getRegistryName() + ". Block does not have valid registered feast harvest item.");
-            return false;
+            //TODO: Add the string id to the feast builder to remove the fragile item association method.
+            //return false;
         }
 
         String errorType = "";
@@ -209,12 +210,20 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     }
 
     @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+        this.setDefaultFacing(worldIn, pos, state);
+    }
+
+    @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        //TODO: Check to make sure this is rotating correctly.
-        return this.getDefaultFacing(world, pos, this.getDefaultState()).withProperty(SERVINGS, meta);
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
     public int getRemainingServings(IBlockState state) {
-        return 4 - state.getValue(SERVINGS);
+        return this.getMaxServings() - state.getValue(SERVINGS);
+    }
+
+    public int getMaxServings() {
+        return 4;
     }
 }

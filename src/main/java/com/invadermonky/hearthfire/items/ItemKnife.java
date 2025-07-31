@@ -37,7 +37,7 @@ public class ItemKnife extends ItemSword {
 
     /** Internal constructor. Used only for Hearthfire items. */
     public ItemKnife(String unlocName, ToolMaterial material) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, material);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, material);
     }
 
     public static void onKnifeBlockInteractHandler(PlayerInteractEvent.RightClickBlock event) {

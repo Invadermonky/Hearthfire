@@ -35,7 +35,7 @@ public class BlockOrganicCompost extends Block {
 
     /** Internal constructor. Used only for Hearthfire blocks. */
     public BlockOrganicCompost(String unlocName) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST);
     }
 
     public int getMaxCompostingStage() {

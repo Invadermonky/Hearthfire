@@ -24,7 +24,7 @@ public class PlatedFeastProperties extends AbstractFeastProperties<PlatedFeastPr
 
         public PlatedFeastBuilder(BlockEmptyPlate.EnumPlateType plateType) {
             this.plateType = plateType;
-            this.AABB_FEAST = Block.NULL_AABB;
+            this.AABB_FEAST = Block.FULL_BLOCK_AABB;
         }
 
         public PlatedFeastBuilder setAABB(AxisAlignedBB aabb) {

@@ -42,14 +42,15 @@ public class StringHelper {
     }
 
     public static String getEffectTooltipString(PotionEffect potionEffect) {
-        String effectStr = TextFormatting.BLUE + " " + I18n.format(potionEffect.getEffectName());
+        TextFormatting color = potionEffect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE;
+        StringBuilder builder = new StringBuilder(color + " " + I18n.format(potionEffect.getEffectName()));
         if (potionEffect.getAmplifier() > 0) {
-            effectStr += " " + I18n.format("potion.potency." + potionEffect.getAmplifier());
+            builder.append(" ").append(I18n.format("potion.potency." + potionEffect.getAmplifier()));
         }
         if (potionEffect.getDuration() > 20) {
-            effectStr += " (" + getEffectDurationString(potionEffect.getDuration()) + ")";
+            builder.append(" (").append(getEffectDurationString(potionEffect.getDuration())).append(")");
         }
-        return effectStr;
+        return builder.toString();
     }
 
     public static String getEffectDurationString(int ticks) {

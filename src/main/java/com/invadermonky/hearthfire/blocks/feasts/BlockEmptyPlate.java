@@ -40,7 +40,7 @@ public class BlockEmptyPlate extends Block implements ICustomItemModel {
     }
 
     public BlockEmptyPlate(String unlocName) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, Material.WOOD);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, Material.WOOD);
     }
 
     @Override

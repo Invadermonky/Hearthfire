@@ -2,28 +2,24 @@ package com.invadermonky.hearthfire.blocks;
 
 import com.google.common.collect.Lists;
 import com.invadermonky.hearthfire.Hearthfire;
+import com.invadermonky.hearthfire.api.blocks.properties.CropProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -35,20 +31,26 @@ import java.util.Random;
 public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
     protected static final AxisAlignedBB SHAPE = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.8125D, 0.875D);
 
-    public ResourceLocation lootTable;
-    protected List<ItemStack> tableDrops;
+    protected CropProperties properties;
 
-    public BlockWildCrop(String unlocName, String modId, CreativeTabs creativeTab, ResourceLocation lootTable) {
+    public BlockWildCrop(String unlocName, String modId, CreativeTabs creativeTab, CropProperties properties) {
         this.setRegistryName(modId, unlocName);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(creativeTab);
-        this.lootTable = lootTable;
-        this.tableDrops = Lists.newArrayList();
+        this.properties = properties;
     }
 
     /** Internal constructor. Used only for Hearthfire blocks. */
-    public BlockWildCrop(String unlocName, ResourceLocation lootTable) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, lootTable);
+    public BlockWildCrop(String unlocName, CropProperties properties) {
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
+    }
+
+    public Item getSeed() {
+        return this.properties.getSeed();
+    }
+
+    public Item getCrop() {
+        return this.properties.getCrop();
     }
 
     @Override
@@ -91,19 +93,6 @@ public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
     }
 
     @Override
-    public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
-        if (worldIn instanceof WorldServer) {
-            float fortune = player.getLuck();
-            if (Enchantments.FORTUNE != null) {
-                fortune += (float) EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, player.getHeldItemMainhand());
-            }
-            LootContext context = new LootContext(fortune, (WorldServer) worldIn, worldIn.getLootTableManager(), null, player, null);
-            this.tableDrops = worldIn.getLootTableManager().getLootTableFromLocation(lootTable).generateLootForPools(worldIn.rand, context);
-        }
-        super.onBlockHarvested(worldIn, pos, state, player);
-    }
-
-    @Override
     public EnumOffsetType getOffsetType() {
         return EnumOffsetType.XZ;
     }
@@ -120,7 +109,22 @@ public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
 
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        this.tableDrops.stream().filter(stack -> !stack.isEmpty()).forEach(drops::add);
+        Random rand = world instanceof World ? ((World) world).rand : new Random();
+        Item seed = this.getSeed() == Items.AIR && this.getCrop() != Items.AIR ? this.getCrop() : this.getSeed();
+
+        if(seed != Items.AIR) {
+            drops.add(new ItemStack(seed));
+
+            for (int i = 0; i < fortune; i++) {
+                if (rand.nextFloat() < 0.5f) {
+                    drops.add(new ItemStack(seed));
+                }
+            }
+        }
+
+        if(this.getCrop() != Items.AIR && rand.nextFloat() < 0.2f) {
+            drops.add(new ItemStack(this.getCrop()));
+        }
     }
 
     @Override

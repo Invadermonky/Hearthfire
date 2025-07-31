@@ -6,7 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 public class CreativeTabsHF {
-    public static final CreativeTabs TAB_HEARTH_AND_HOME = new CreativeTabs(Hearthfire.MOD_ID + ".tabBasic.name") {
+    public static final CreativeTabs TAB_FARM_AND_FEAST = new CreativeTabs(Hearthfire.MOD_ID + ".tabBasic.name") {
         @Override
         public ItemStack createIcon() {
             //TODO:

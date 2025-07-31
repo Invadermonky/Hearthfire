@@ -1,24 +1,24 @@
 package com.invadermonky.hearthfire.blocks;
 
 import com.invadermonky.hearthfire.Hearthfire;
+import com.invadermonky.hearthfire.api.blocks.properties.CropProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
 public class BlockSandyShrub extends BlockWildCrop {
-    public BlockSandyShrub(String unlocName, String modId, CreativeTabs creativeTab, ResourceLocation lootTable) {
-        super(unlocName, modId, creativeTab, lootTable);
+    public BlockSandyShrub(String unlocName, String modId, CreativeTabs creativeTab, CropProperties properties) {
+        super(unlocName, modId, creativeTab, properties);
     }
 
     /** Internal constructor. Used only for Hearthfire blocks. */
-    public BlockSandyShrub(String unlocName, ResourceLocation lootTable) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, lootTable);
+    public BlockSandyShrub(String unlocName, CropProperties properties) {
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
     public boolean canGrowHere(World world, BlockPos pos) {

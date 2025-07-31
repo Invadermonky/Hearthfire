@@ -35,7 +35,7 @@ public abstract class AbstractItemFoodHF<T extends AbstractFoodProperties<?, T>>
     }
 
     public AbstractItemFoodHF(String unlocName, T properties) {
-        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_HEARTH_AND_HOME, properties);
+        this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
     public T getProperties() {
