@@ -3,6 +3,9 @@ package com.invadermonky.hearthfire.registry;
 import com.invadermonky.hearthfire.Hearthfire;
 import com.invadermonky.hearthfire.api.items.IBlockAssociation;
 import com.invadermonky.hearthfire.items.*;
+import com.invadermonky.hearthfire.items.seeds.ItemSeedFoodHF;
+import com.invadermonky.hearthfire.items.seeds.ItemSeedsHF;
+import com.invadermonky.hearthfire.items.seeds.ItemTrellisSeeds;
 import com.invadermonky.hearthfire.util.helpers.LogHelper;
 import com.invadermonky.hearthfire.util.libs.ItemPropertiesHF;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -31,7 +34,7 @@ public class ModItemsHF {
 
     //Seeds
     public static final ItemSeedsHF SEEDS_CABBAGE = null;
-    public static final ItemSeedsHF SEEDS_TOMATO = null;
+    public static final ItemTrellisSeeds SEEDS_TOMATO = null;
 
     //Sweets
     public static final ItemFoodHF CAKE_SLICE = null;
@@ -40,7 +43,9 @@ public class ModItemsHF {
     public static final ItemFoodHF BEEF_STEW = null;
 
     //Plated Foods
-    public static final ItemFoodHF BACON_AND_EGGS = null;
+    public static final ItemFoodHF PORK_ROAST = null;
+    public static final ItemFoodHF ROAST_CHICKEN = null;
+    public static final ItemFoodHF SHEPHERDS_PIE = null;
 
     //Animal Foods
     public static final ItemDogFood DOG_FOOD = null;
@@ -86,23 +91,27 @@ public class ModItemsHF {
         ;
         addItemToRegister(new ItemCropFoodHF("corn", ItemPropertiesHF.PROPS_CORN));
         addItemToRegister(new ItemSeedFoodHF("onion", ItemPropertiesHF.PROPS_ONION));
-        //addItemToRegister(new ItemFoodHF("tomato", ItemPropertiesHF.PROPS_TOMATO));
+        addItemToRegister(new ItemCropFoodHF("tomato", ItemPropertiesHF.PROPS_TOMATO));
 
         //Seeds
         addItemToRegister(new ItemSeedsHF("seeds_cabbage", ItemPropertiesHF.PROPS_SEEDS_CABBAGE));
         addItemToRegister(new ItemSeedsHF("seeds_corn", ItemPropertiesHF.PROPS_SEEDS_CORN));
-        //addItemToRegister(new ItemSeedsHF("seeds_tomato", ItemPropertiesHF.PROPS_SEEDS_TOMATO));
+        addItemToRegister(new ItemTrellisSeeds("seeds_tomato", ItemPropertiesHF.PROPS_SEEDS_TOMATO));
 
 
         //TODO: Testing each food type. Will need to remove to avoid pissing off FD dev.
 
         //Sweets
-        //addItemToRegister(CAKE_SLICE = new ItemFoodHF("cake_slice", FoodValues.CAKE_SLICE));
+        //addItemToRegister(new ItemFoodHF("cake_slice", ItemPropertiesHF.PROPS_CAKE));
 
         //Soups and Stews
         //addItemToRegister(BEEF_STEW = new ItemFoodHF(FoodValues.BEEF_STEW), "beef_stew");
 
         //Plated Foods
+        addItemToRegister(new ItemFoodHF("pizza_slice", ItemPropertiesHF.PROPS_PIZZA_SLICE));
+        addItemToRegister(new ItemFoodHF("pork_roast", ItemPropertiesHF.PROPS_PORK_ROAST));
+        addItemToRegister(new ItemFoodHF("roast_chicken", ItemPropertiesHF.PROPS_ROAST_CHICKEN));
+        addItemToRegister(new ItemFoodHF("shepherds_pie", ItemPropertiesHF.PROPS_SHEPHERDS_PIE));
         //addItemToRegister(BACON_AND_EGGS = new ItemFoodHF(FoodValues.BACON_AND_EGGS), "bacon_and_eggs");
 
         //Pet Food

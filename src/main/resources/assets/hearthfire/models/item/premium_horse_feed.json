@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:item/premium_horse_feed"
+    "layer0": "hearthfire:items/premium_horse_feed"
   }
 }

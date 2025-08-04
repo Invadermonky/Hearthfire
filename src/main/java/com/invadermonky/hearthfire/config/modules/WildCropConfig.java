@@ -11,6 +11,7 @@ public class WildCropConfig {
     public String[] biomeTypeBlacklist;
     @Config.Comment("Biome type whitelist. Example: FOREST, PLAINS, SANDY, HOT")
     public String[] biomeTypeWhitelist;
+
     public WildCropConfig(int spawnWeight, String[] biomeTypeBlacklist, String[] biomeTypeWhitelist) {
         this.spawnWeight = spawnWeight;
         this.biomeTypeBlacklist = biomeTypeBlacklist;

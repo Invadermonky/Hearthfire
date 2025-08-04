@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:item/onion"
+    "layer0": "hearthfire:items/onion"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:item/cake_slice"
+    "layer0": "hearthfire:items/cake_slice"
   }
 }

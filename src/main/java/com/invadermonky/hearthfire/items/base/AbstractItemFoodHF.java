@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.items.base;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.items.properties.base.AbstractFoodProperties;
+import com.invadermonky.hearthfire.api.properties.items.base.AbstractFoodProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.config.ConfigHandlerHF;
 import com.invadermonky.hearthfire.util.helpers.StringHelper;

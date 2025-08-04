@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "block/cross",
   "textures": {
-    "cross": "hearthfire:block/wild_corn"
+    "cross": "hearthfire:blocks/wild_corn"
   }
 }

@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.blocks.crops;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.properties.CropProperties;
+import com.invadermonky.hearthfire.api.properties.blocks.crops.DoubleCropProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.PropertyEnum;
@@ -13,11 +13,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 
 import java.util.Random;
 
-public class BlockDoubleCrop extends BlockCropHF {
+public class BlockDoubleCrop extends AbstractBlockCropHF<DoubleCropProperties> {
     public static final PropertyEnum<DoubleCropPart> CROP_PART = PropertyEnum.create("part", DoubleCropPart.class);
+    //TODO: Move this to the properties with a nested array AABB[CROP_PART][AGE]
     protected static final AxisAlignedBB[] AABB_DOUBLE_CROP = new AxisAlignedBB[]{
             //Bottom
             Block.FULL_BLOCK_AABB,
@@ -39,18 +41,18 @@ public class BlockDoubleCrop extends BlockCropHF {
             Block.FULL_BLOCK_AABB
     };
 
-    public BlockDoubleCrop(String unlocName, String modId, CreativeTabs creativeTab, CropProperties properties) {
+    public BlockDoubleCrop(String unlocName, String modId, CreativeTabs creativeTab, DoubleCropProperties properties) {
         super(unlocName, modId, creativeTab, properties);
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0).withProperty(CROP_PART, DoubleCropPart.BOTTOM));
     }
 
-    public BlockDoubleCrop(String unlocName, CropProperties properties) {
+    public BlockDoubleCrop(String unlocName, DoubleCropProperties properties) {
         this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        return AABB_DOUBLE_CROP[this.getMetaFromState(state)];
+        return this.getProperties().AABB_CROP.get(this.getCropPart(state))[this.getAge(state)];
     }
 
     @Override
@@ -63,11 +65,12 @@ public class BlockDoubleCrop extends BlockCropHF {
             DoubleCropPart cropPart = this.getCropPart(state);
             int age = this.getAge(state);
 
+            //Double crop natural growth only occurs on the bottom block
             if (age < this.getMaxAge() && cropPart == DoubleCropPart.BOTTOM) {
                 float f = getGrowthChance(this, worldIn, pos);
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt((int) (25.0F / f) + 1) == 0)) {
+                if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt((int) (25.0F / f) + 1) == 0)) {
                     this.handleGrowth(worldIn, pos, state, age + 1);
-                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
+                    ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
                 }
             }
         }
@@ -107,11 +110,11 @@ public class BlockDoubleCrop extends BlockCropHF {
         if (state.getValue(CROP_PART) == DoubleCropPart.TOP) {
             IBlockState down = world.getBlockState(pos.down());
             if (down.getBlock() == this && down.getValue(CROP_PART) == DoubleCropPart.BOTTOM) {
-                ((BlockDoubleCrop) down.getBlock()).handleGrowth(world, pos, state, age);
+                ((BlockDoubleCrop) down.getBlock()).handleGrowth(world, pos.down(), down, age);
             }
         } else {
-            //At ages 4-7 the crop grows the block above it.
-            if (age >= 4) {
+            //Once the crop reaches the required age, it grows into the block above it.
+            if (age >= this.getDoubleHeightAge()) {
                 //Crop will only grow if the block above is air
                 if (world.isAirBlock(pos.up()) || world.getBlockState(pos.up()).getBlock() == this) {
                     IBlockState upState = this.getDefaultState().withProperty(AGE, age).withProperty(CROP_PART, DoubleCropPart.TOP);
@@ -128,8 +131,28 @@ public class BlockDoubleCrop extends BlockCropHF {
         return state.getValue(CROP_PART);
     }
 
+    public int getDoubleHeightAge() {
+        return this.getProperties().doubleHeightAge;
+    }
+
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+        if (state.getValue(CROP_PART) == DoubleCropPart.TOP) {
+            //Bottom block harvested
+            IBlockState down = worldIn.getBlockState(pos.down());
+            if (down.getBlock() != this || down.getValue(CROP_PART) != DoubleCropPart.BOTTOM) {
+                worldIn.setBlockToAir(pos);
+            }
+        } else if (state.getValue(CROP_PART) == DoubleCropPart.BOTTOM) {
+            //Top block harvested
+            IBlockState up = worldIn.getBlockState(pos.up());
+            if (this.getAge(state) >= this.getDoubleHeightAge() && (up.getBlock() != this || up.getValue(CROP_PART) != DoubleCropPart.TOP)) {
+                worldIn.setBlockToAir(pos);
+            }
+        } else {
+            super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+        }
+
         if (state.getValue(CROP_PART) == DoubleCropPart.TOP) {
             IBlockState down = worldIn.getBlockState(pos.down());
             if (down.getBlock() != this || down.getValue(CROP_PART) != DoubleCropPart.BOTTOM) {
@@ -138,22 +161,6 @@ public class BlockDoubleCrop extends BlockCropHF {
         } else {
             super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
         }
-    }
-
-    @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        if (state.getValue(CROP_PART) == DoubleCropPart.BOTTOM) {
-            IBlockState up = worldIn.getBlockState(pos.up());
-            if (up.getBlock() == this && up.getValue(CROP_PART) == DoubleCropPart.TOP) {
-                worldIn.setBlockToAir(pos.up());
-            }
-        } else {
-            IBlockState down = worldIn.getBlockState(pos.down());
-            if (down.getBlock() == this && down.getValue(CROP_PART) == DoubleCropPart.BOTTOM) {
-                worldIn.setBlockToAir(pos.down());
-            }
-        }
-        super.breakBlock(worldIn, pos, state);
     }
 
     public enum DoubleCropPart implements IStringSerializable {

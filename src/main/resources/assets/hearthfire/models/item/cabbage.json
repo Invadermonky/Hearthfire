@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:item/cabbage"
+    "layer0": "hearthfire:items/cabbage"
   }
 }

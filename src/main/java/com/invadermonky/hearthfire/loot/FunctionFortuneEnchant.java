@@ -31,14 +31,14 @@ public class FunctionFortuneEnchant extends LootFunction {
     @Override
     public ItemStack apply(ItemStack stack, Random rand, LootContext context) {
         Entity entity = context.getKillerPlayer();
-        if(entity instanceof EntityLivingBase) {
+        if (entity instanceof EntityLivingBase) {
             int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, ((EntityLivingBase) entity).getHeldItemMainhand());
-            if(fortune == 0) {
+            if (fortune == 0) {
                 return stack;
             }
             float extra = fortune * this.count.generateFloat(rand);
             stack.setCount(Math.round(extra));
-            if(this.limit != 0 && stack.getCount() > this.limit) {
+            if (this.limit != 0 && stack.getCount() > this.limit) {
                 stack.setCount(this.limit);
             }
         }
@@ -53,7 +53,7 @@ public class FunctionFortuneEnchant extends LootFunction {
         @Override
         public void serialize(JsonObject object, FunctionFortuneEnchant value, JsonSerializationContext serializationContext) {
             object.add("count", serializationContext.serialize(value.count));
-            if(value.limit > 0) {
+            if (value.limit > 0) {
                 object.add("limit", serializationContext.serialize(Integer.valueOf(value.limit)));
             }
         }

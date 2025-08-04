@@ -1,8 +1,8 @@
 package com.invadermonky.hearthfire.libs;
 
 import com.google.common.collect.ImmutableMap;
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 import com.invadermonky.hearthfire.items.properties.FoodProperties;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
 import com.invadermonky.hearthfire.registry.ModPotionsHF;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;

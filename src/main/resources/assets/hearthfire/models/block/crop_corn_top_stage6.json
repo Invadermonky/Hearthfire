@@ -1,6 +1,6 @@
 {
   "parent": "block/crop",
   "textures": {
-    "crop": "hearthfire:block/crop_corn_top_stage6"
+    "crop": "hearthfire:blocks/crop_corn_top_stage6"
   }
 }

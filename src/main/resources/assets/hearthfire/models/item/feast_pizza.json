@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:item/feast_pizza"
+    "layer0": "hearthfire:items/feast_pizza"
   }
 }

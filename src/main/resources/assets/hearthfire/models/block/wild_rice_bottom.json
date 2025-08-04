@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "hearthfire:block/wild_rice_bottom"
+    "cross": "hearthfire:blocks/wild_rice_bottom"
   }
 }

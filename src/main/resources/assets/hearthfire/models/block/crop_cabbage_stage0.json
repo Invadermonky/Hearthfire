@@ -1,6 +1,6 @@
 {
   "parent": "block/crop",
   "textures": {
-    "crop": "hearthfire:block/crop_cabbage_stage0"
+    "crop": "hearthfire:blocks/crop_cabbage_stage0"
   }
 }

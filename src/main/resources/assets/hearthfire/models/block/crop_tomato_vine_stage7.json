@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "hearthfire:blocks/crop_tomato_vine_stage7"
+  }
+}

@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.blocks.feasts;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.properties.FeastProperties;
+import com.invadermonky.hearthfire.api.properties.blocks.feasts.FeastProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;

@@ -2,17 +2,16 @@ package com.invadermonky.hearthfire.blocks;
 
 import com.google.common.collect.Lists;
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.properties.CropProperties;
+import com.invadermonky.hearthfire.api.properties.blocks.base.AbstractCropProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -21,8 +20,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -31,9 +28,9 @@ import java.util.Random;
 public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
     protected static final AxisAlignedBB SHAPE = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.8125D, 0.875D);
 
-    protected CropProperties properties;
+    protected AbstractCropProperties<?, ?> properties;
 
-    public BlockWildCrop(String unlocName, String modId, CreativeTabs creativeTab, CropProperties properties) {
+    public BlockWildCrop(String unlocName, String modId, CreativeTabs creativeTab, AbstractCropProperties<?, ?> properties) {
         this.setRegistryName(modId, unlocName);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(creativeTab);
@@ -41,7 +38,7 @@ public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
     }
 
     /** Internal constructor. Used only for Hearthfire blocks. */
-    public BlockWildCrop(String unlocName, CropProperties properties) {
+    public BlockWildCrop(String unlocName, AbstractCropProperties<?, ?> properties) {
         this(unlocName, Hearthfire.MOD_ID, CreativeTabsHF.TAB_FARM_AND_FEAST, properties);
     }
 
@@ -81,17 +78,6 @@ public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
         return false;
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    @Override
-    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-        return BlockFaceShape.UNDEFINED;
-    }
-
     @Override
     public EnumOffsetType getOffsetType() {
         return EnumOffsetType.XZ;
@@ -112,7 +98,7 @@ public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
         Random rand = world instanceof World ? ((World) world).rand : new Random();
         Item seed = this.getSeed() == Items.AIR && this.getCrop() != Items.AIR ? this.getCrop() : this.getSeed();
 
-        if(seed != Items.AIR) {
+        if (seed != Items.AIR) {
             drops.add(new ItemStack(seed));
 
             for (int i = 0; i < fortune; i++) {
@@ -122,7 +108,7 @@ public class BlockWildCrop extends BlockBush implements IGrowable, IShearable {
             }
         }
 
-        if(this.getCrop() != Items.AIR && rand.nextFloat() < 0.2f) {
+        if (this.getCrop() != Items.AIR && rand.nextFloat() < 0.2f) {
             drops.add(new ItemStack(this.getCrop()));
         }
     }

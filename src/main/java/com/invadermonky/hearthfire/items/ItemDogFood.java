@@ -1,11 +1,11 @@
 package com.invadermonky.hearthfire.items;
 
-import com.invadermonky.hearthfire.api.items.properties.food.FoodProperties;
+import com.invadermonky.hearthfire.api.properties.items.food.FoodProperties;
+import com.invadermonky.hearthfire.api.utils.AttributeBoost;
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 import com.invadermonky.hearthfire.config.ConfigHandlerHF;
 import com.invadermonky.hearthfire.items.base.AbstractItemFoodHF;
 import com.invadermonky.hearthfire.items.properties.DogFoodProperties;
-import com.invadermonky.hearthfire.items.util.AttributeBoost;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
 import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

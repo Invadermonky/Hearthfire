@@ -1,7 +1,12 @@
 
 # Advancements
 # Blocks
+tile.hearthfire:feast_pork_roast.name=Pork Roast
+tile.hearthfire:feast_roasted_chicken.name=Roasted Chicken
+tile.hearthfire:feast_shepherds_pie.name=Shepherd's Pie
+tile.hearthfire:trellis.name=Crop Trellis
 tile.hearthfire:wild_corn.name=Wild Corn
+tile.hearthfire:wild_onion.name=Wild Onion
 
 # Chat
 chat.hearthfire:feast_interact_failure.bowl=You need a bowl to eat this.
@@ -29,8 +34,12 @@ item.hearthfire:knife_flint.name=Flint Knife
 item.hearthfire:knife_iron.name=Iron Knife
 item.hearthfire:knife_gold.name=Golden Knife
 item.hearthfire:knife_diamond.name=Diamond Knife
+item.hearthfire:onion.name=Onion
+item.hearthfire:pork_roast.name=Plate of Pork Roast
+item.hearthfire:roast_chicken.name=Plate of Roast Chicken
 item.hearthfire:seeds_cabbage.name=Cabbage Seeds
 item.hearthfire:seeds_corn.name=Corn Seeds
+item.hearthfire:shepherds_pie.name=Plate of Shepherd's Pie
 
 # JEI
 # Subtitles
@@ -83,12 +92,11 @@ tile.hearthfire:mushroom_colony_brown.name=Brown Mushroom Colony
 tile.hearthfire:mushroom_colony_red.name=Red Mushroom Colony
 
 tile.hearthfire:sandy_shrub.name=Sandy Shrub
-tile.hearthfire:wild_cabbages.name=Wild Cabbage
-tile.hearthfire:wild_tomatoes.name=Tomato Shrub
-tile.hearthfire:wild_onions.name=Wild Onion
-tile.hearthfire:wild_carrots.name=Wild Carrot
-tile.hearthfire:wild_potatoes.name=Wild Potato
-tile.hearthfire:wild_beetroots.name=Sea Beet
+tile.hearthfire:wild_cabbage.name=Wild Cabbage
+tile.hearthfire:wild_tomato.name=Tomato Shrub
+tile.hearthfire:wild_carrot.name=Wild Carrot
+tile.hearthfire:wild_potato.name=Wild Potato
+tile.hearthfire:wild_beetroot.name=Sea Beet
 tile.hearthfire:wild_rice.name=Wild Rice
 
 tile.hearthfire:apple_pie.name=Apple Pie
@@ -96,7 +104,6 @@ tile.hearthfire:sweet_berry_cheesecake.name=Sweet Berry Cheesecake
 tile.hearthfire:chocolate_pie.name=Chocolate Pie
 
 item.hearthfire:tomato.name=Tomato
-item.hearthfire:onion.name=Onion
 item.hearthfire:rice.name=Rice
 item.hearthfire:cabbage_seeds.name=Cabbage Seeds
 item.hearthfire:tomato_seeds.name=Tomato Seeds
@@ -185,13 +192,11 @@ item.hearthfire:grilled_salmon.name=Grilled Salmon
 item.hearthfire:mushroom_rice.name=Mushroom Rice
 
 tile.hearthfire:roast_chicken_block.name=Roast Chicken
-item.hearthfire:roast_chicken.name=Plate of Roast Chicken
 tile.hearthfire:stuffed_pumpkin_block.name=Stuffed Pumpkin
 item.hearthfire:stuffed_pumpkin.name=Bowl of Stuffed Pumpkin
 tile.hearthfire:honey_glazed_ham_block.name=Honey Glazed Ham
 item.hearthfire:honey_glazed_ham.name=Plate of Honey Glazed Ham
 tile.hearthfire:shepherds_pie_block.name=Shepherd's Pie
-item.hearthfire:shepherds_pie.name=Plate of Shepherd's Pie
 tile.hearthfire:rice_roll_medley_block.name=Rice Roll Medley
 
 item.hearthfire:dog_food.name=Dog Food
@@ -302,10 +307,10 @@ jei.hearthfire:decomposition.accelerators=Sped up by adjacent activators (see be
 jei.hearthfire:straw.info=A dry plant fiber used in crafting. Obtained by cutting grassy crops and plants with a Knife.
 jei.hearthfire:knife.info=A lightweight melee weapon, with fast swings and gentle damage.\n\nThey can harvest Straw from grasses, and guarantee secondary drops from animals.
 jei.hearthfire:ham.info=A large cut of meat from a Pig or Hoglin's leg.\n\nYou will need something lighter than a Sword to cut one...
-jei.hearthfire:wild_cabbages.info=Cabbages can be commonly found as a wild plant in beach coasts.
-jei.hearthfire:wild_beetroots.info=Beetroot can be commonly found as a wild plant in beach coasts.
-jei.hearthfire:wild_carrots.info=Carrots can be commonly found as a wild plant in temperate lands, such as plains and forests.
-jei.hearthfire:wild_onions.info=Onions can be commonly found as a wild plant in temperate lands, such as plains and forests.
-jei.hearthfire:wild_potatoes.info=Potatoes can be commonly found as a wild plant in cold lands, such as mountains and taigas.
-jei.hearthfire:wild_tomatoes.info=Tomatoes can be commonly found as a wild plant in arid lands, such as savannas and deserts.
+jei.hearthfire:wild_cabbage.info=Cabbages can be commonly found as a wild plant in beach coasts.
+jei.hearthfire:wild_beetroot.info=Beetroot can be commonly found as a wild plant in beach coasts.
+jei.hearthfire:wild_carrot.info=Carrots can be commonly found as a wild plant in temperate lands, such as plains and forests.
+jei.hearthfire:wild_onion.info=Onions can be commonly found as a wild plant in temperate lands, such as plains and forests.
+jei.hearthfire:wild_potato.info=Potatoes can be commonly found as a wild plant in cold lands, such as mountains and taigas.
+jei.hearthfire:wild_tomato.info=Tomatoes can be commonly found as a wild plant in arid lands, such as savannas and deserts.
 jei.hearthfire:info.wild_rice=Rice can be commonly found as a wild plant in the ponds of wet lands, such as swamps and jungles.

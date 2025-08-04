@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:block/wild_corn"
+    "layer0": "hearthfire:blocks/wild_corn"
   }
 }

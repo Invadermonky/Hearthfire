@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.blocks.feasts;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.properties.PlatedFeastProperties;
+import com.invadermonky.hearthfire.api.properties.blocks.feasts.PlatedFeastProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.registry.ModBlocksHF;
 import net.minecraft.block.state.IBlockState;
@@ -11,6 +11,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,14 +29,15 @@ public class BlockPlatedFeast extends AbstractBlockFeast<PlatedFeastProperties> 
     }
 
     @Override
-    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
-        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_PLATE);
-        addCollisionBoxToList(pos, entityBox, collidingBoxes, this.getProperties().AABB_FEAST);
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        //TODO: This needs to account for the plate hitbox
+        return this.getProperties().AABB_FEAST;
     }
 
     @Override
-    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
-        return this.getProperties().AABB_FEAST;
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_PLATE);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, this.getProperties().AABB_FEAST);
     }
 
     //TODO: raytrace hit and collision box for feast.
@@ -47,11 +49,11 @@ public class BlockPlatedFeast extends AbstractBlockFeast<PlatedFeastProperties> 
 
     @Override
     protected void consumeServing(World world, BlockPos pos, IBlockState state) {
-        if(!world.isRemote) {
+        if (!world.isRemote) {
             int servings = this.getRemainingServings(state);
             if (servings > 1) {
                 servings--;
-                world.setBlockState(pos, state.withProperty(SERVINGS,  this.getMaxServings() - servings), 3);
+                world.setBlockState(pos, state.withProperty(SERVINGS, this.getMaxServings() - servings), 3);
             } else {
                 IBlockState plateState = ModBlocksHF.EMPTY_PLATE
                         .getDefaultState()

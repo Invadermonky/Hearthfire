@@ -1,6 +1,6 @@
 package com.invadermonky.hearthfire.items;
 
-import com.invadermonky.hearthfire.api.items.properties.food.FoodProperties;
+import com.invadermonky.hearthfire.api.properties.items.food.FoodProperties;
 import com.invadermonky.hearthfire.items.base.AbstractItemFoodHF;
 import net.minecraft.creativetab.CreativeTabs;
 

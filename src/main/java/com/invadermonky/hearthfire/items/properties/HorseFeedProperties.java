@@ -2,8 +2,8 @@ package com.invadermonky.hearthfire.items.properties;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.invadermonky.hearthfire.items.util.AttributeBoost;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
+import com.invadermonky.hearthfire.api.utils.AttributeBoost;
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 
 import java.util.List;
 import java.util.Set;

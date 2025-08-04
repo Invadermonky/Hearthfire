@@ -11,8 +11,8 @@ import java.util.Random;
 public class KnifeKillCondition implements LootCondition {
     @Override
     public boolean testCondition(Random rand, LootContext context) {
-        EntityPlayer player = (EntityPlayer) context.getKillerPlayer();
-        if (player != null) {
+        if (context.getKillerPlayer() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) context.getKillerPlayer();
             ItemStack heldItem = player.getHeldItemMainhand();
             return ModTags.tagContains(ModTags.KNIFE_ITEMS, heldItem);
         }

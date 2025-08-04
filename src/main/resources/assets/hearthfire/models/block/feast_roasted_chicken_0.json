@@ -1,7 +1,7 @@
 {
   "parent": "hearthfire:block/feast_poultry_0",
   "textures": {
-    "texture": "hearthfire:block/feast_roasted_chicken",
-    "particle": "hearthfire:block/feast_roasted_chicken"
+    "texture": "hearthfire:blocks/feast_roasted_chicken",
+    "particle": "hearthfire:blocks/feast_roasted_chicken"
   }
 }

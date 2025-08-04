@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.items.properties;
 
 import com.google.common.collect.Lists;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -1,8 +1,8 @@
 package com.invadermonky.hearthfire.libs;
 
+import com.invadermonky.hearthfire.api.utils.AttributeBoost;
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 import com.invadermonky.hearthfire.items.properties.HorseFeedProperties;
-import com.invadermonky.hearthfire.items.util.AttributeBoost;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.init.MobEffects;

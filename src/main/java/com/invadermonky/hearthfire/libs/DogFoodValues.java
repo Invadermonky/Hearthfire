@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.libs;
 
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 import com.invadermonky.hearthfire.items.properties.DogFoodProperties;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
 import net.minecraft.init.MobEffects;
 
 public class DogFoodValues {

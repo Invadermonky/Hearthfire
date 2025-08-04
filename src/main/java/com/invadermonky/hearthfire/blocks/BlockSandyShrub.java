@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.blocks;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.properties.CropProperties;
+import com.invadermonky.hearthfire.api.properties.blocks.crops.CropProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

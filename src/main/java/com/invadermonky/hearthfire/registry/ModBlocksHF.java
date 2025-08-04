@@ -2,15 +2,19 @@ package com.invadermonky.hearthfire.registry;
 
 import com.invadermonky.hearthfire.Hearthfire;
 import com.invadermonky.hearthfire.api.blocks.ICustomItemModel;
-import com.invadermonky.hearthfire.blocks.*;
+import com.invadermonky.hearthfire.blocks.BlockOrganicCompost;
+import com.invadermonky.hearthfire.blocks.BlockRichFarmland;
+import com.invadermonky.hearthfire.blocks.BlockRichSoil;
+import com.invadermonky.hearthfire.blocks.BlockWildCrop;
 import com.invadermonky.hearthfire.blocks.crops.BlockCropHF;
 import com.invadermonky.hearthfire.blocks.crops.BlockDoubleCrop;
 import com.invadermonky.hearthfire.blocks.crops.BlockMushroomColony;
+import com.invadermonky.hearthfire.blocks.crops.BlockTrellisCrop;
 import com.invadermonky.hearthfire.blocks.feasts.BlockEmptyPlate;
 import com.invadermonky.hearthfire.blocks.feasts.BlockFeast;
 import com.invadermonky.hearthfire.blocks.feasts.BlockPlatedFeast;
+import com.invadermonky.hearthfire.blocks.misc.BlockTrellis;
 import com.invadermonky.hearthfire.util.libs.BlockPropertiesHF;
-import com.invadermonky.hearthfire.util.libs.LootTablesHF;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -40,9 +44,11 @@ public class ModBlocksHF {
     public static final BlockRichSoil RICH_SOIL = null;
     public static final BlockRichFarmland RICH_SOIL_FARMLAND = null;
 
-    //Pastries
+    //Misc Blocks
+    public static final BlockTrellis TRELLIS = null;
+
     //Wild Crops
-    public static final BlockSandyShrub SANDY_SHRUB = null;
+    //public static final BlockSandyShrub SANDY_SHRUB = null;
     public static final BlockWildCrop WILD_CABBAGE = null;
     public static final BlockWildCrop WILD_CORN = null;
     public static final BlockWildCrop WILD_ONION = null;
@@ -55,12 +61,15 @@ public class ModBlocksHF {
     public static final BlockCropHF CROP_CABBAGE = null;
     public static final BlockDoubleCrop CROP_CORN = null;
     public static final BlockCropHF CROP_ONION = null;
-    public static final BlockCropHF CROP_TOMATO = null;
+    public static final BlockTrellisCrop CROP_TOMATO = null;
+
+    //Pastries
 
     //Feasts
     public static final BlockEmptyPlate EMPTY_PLATE = null;
     public static final BlockFeast FEAST_PIZZA = null;
     public static final BlockPlatedFeast FEAST_ROASTED_CHICKEN = null;
+    public static final BlockPlatedFeast FEAST_SHEPHERDS_PIE = null;
     public static final BlockPlatedFeast FEAST_PORK_ROAST = null;
 
 
@@ -92,7 +101,7 @@ public class ModBlocksHF {
             if (block instanceof ICustomItemModel) {
                 ((ICustomItemModel) block).registerBlockItemModel(event);
             } else if (Item.getItemFromBlock(block) != Items.AIR) {
-                ModelResourceLocation loc = new ModelResourceLocation(block.delegate.name().toString());
+                ModelResourceLocation loc = new ModelResourceLocation(block.delegate.name().toString(), "inventory");
                 ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, loc);
             }
         });
@@ -106,27 +115,31 @@ public class ModBlocksHF {
         addBlockToRegister(new BlockRichSoil("rich_soil"));
         addBlockToRegister(new BlockRichFarmland("rich_soil_farmland"));
 
+        //Misc
+        addBlockToRegister(new BlockTrellis("trellis"));
+
         //Wild Crops
-        addBlockToRegister(new BlockSandyShrub("sandy_shrub", BlockPropertiesHF.PROPS_CROP_CABBAGE));//TODO: Rice wild crop.
-        addBlockToRegister(new BlockWildCrop("wild_cabbages", BlockPropertiesHF.PROPS_CROP_CABBAGE));
+        //addBlockToRegister(new BlockSandyShrub("sandy_shrub", BlockPropertiesHF.PROPS_CROP_CABBAGE));//TODO: Rice wild crop.
+        addBlockToRegister(new BlockWildCrop("wild_cabbage", BlockPropertiesHF.PROPS_CROP_CABBAGE));
         addBlockToRegister(new BlockWildCrop("wild_corn", BlockPropertiesHF.PROPS_CROP_CORN));
-        addBlockToRegister(new BlockWildCrop("wild_onions", BlockPropertiesHF.PROPS_CROP_ONION));
-        addBlockToRegister(new BlockWildCrop("wild_tomatoes", BlockPropertiesHF.PROPS_CROP_TOMATO));
-        addBlockToRegister(new BlockWildCrop("wild_carrots", BlockPropertiesHF.PROPS_CROP_CARROT));
-        addBlockToRegister(new BlockWildCrop("wild_potatoes", BlockPropertiesHF.PROPS_CROP_POTATO));
-        addBlockToRegister(new BlockWildCrop("wild_beetroots", BlockPropertiesHF.PROPS_CROP_BEETROOT));
+        addBlockToRegister(new BlockWildCrop("wild_onion", BlockPropertiesHF.PROPS_CROP_ONION));
+        addBlockToRegister(new BlockWildCrop("wild_tomato", BlockPropertiesHF.PROPS_CROP_TOMATO));
+        addBlockToRegister(new BlockWildCrop("wild_carrot", BlockPropertiesHF.PROPS_CROP_CARROT));
+        addBlockToRegister(new BlockWildCrop("wild_potato", BlockPropertiesHF.PROPS_CROP_POTATO));
+        addBlockToRegister(new BlockWildCrop("wild_beetroot", BlockPropertiesHF.PROPS_CROP_BEETROOT));
 
         //Crops
         addBlockToRegister(new BlockCropHF("crop_cabbage", BlockPropertiesHF.PROPS_CROP_CABBAGE));
         addBlockToRegister(new BlockDoubleCrop("crop_corn", BlockPropertiesHF.PROPS_CROP_CORN).setDropOnlyCrops());
         addBlockToRegister(new BlockCropHF("crop_onion", BlockPropertiesHF.PROPS_CROP_ONION));
-        //addBlockToRegister(new BlockCropHF("crop_tomato"));
+        addBlockToRegister(new BlockTrellisCrop("crop_tomato", BlockPropertiesHF.PROPS_CROP_TOMATO));
 
         //Feasts
         //addBlockToRegister(new BlockEmptyPlate("empty_plate"));
         addBlockToRegister(new BlockFeast("feast_pizza", BlockPropertiesHF.PROPS_FEAST_PIZZA));
-        addBlockToRegister(new BlockPlatedFeast("feast_roasted_chicken", BlockPropertiesHF.PROPS_FEAST_POULTRY));
-        addBlockToRegister(new BlockPlatedFeast("feast_pork_roast", BlockPropertiesHF.PROPS_FEAST_ROAST));
+        addBlockToRegister(new BlockPlatedFeast("feast_shepherds_pie", BlockPropertiesHF.PROPS_FEAST_SHEPHERDS_PIE));
+        addBlockToRegister(new BlockPlatedFeast("feast_roasted_chicken", BlockPropertiesHF.PROPS_FEAST_ROASTED_CHICKEN));
+        addBlockToRegister(new BlockPlatedFeast("feast_pork_roast", BlockPropertiesHF.PROPS_FEAST_PORK_ROAST));
 
     }
 }

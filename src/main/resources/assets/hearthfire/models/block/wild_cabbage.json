@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "hearthfire:blocks/wild_cabbage"
+  }
+}

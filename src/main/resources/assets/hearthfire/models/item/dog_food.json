@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "hearthfire:item/dog_food"
+    "layer0": "hearthfire:items/dog_food"
   }
 }

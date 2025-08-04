@@ -41,6 +41,7 @@ public class ItemKnife extends ItemSword {
     }
 
     public static void onKnifeBlockInteractHandler(PlayerInteractEvent.RightClickBlock event) {
+        //TODO: Change to recipe
         ItemStack toolStack = event.getItemStack();
         if (toolStack.getItem() instanceof ItemKnife || ModTags.tagContains(ModTags.KNIFE_ITEMS, toolStack)) {
             World world = event.getWorld();

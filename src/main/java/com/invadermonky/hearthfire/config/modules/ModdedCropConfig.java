@@ -13,6 +13,7 @@ public class ModdedCropConfig {
     public String[] biomeTypeBlacklist;
     @Config.Comment("Biome type whitelist. Example: FOREST, PLAINS, SANDY, HOT")
     public String[] biomeTypeWhitelist;
+
     public ModdedCropConfig(int spawnWeight, String[] biomeTypeBlacklist, String[] biomeTypeWhitelist) {
         this.spawnWeight = spawnWeight;
         this.biomeTypeBlacklist = biomeTypeBlacklist;

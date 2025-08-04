@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
+  "parent": "block/cross",
   "textures": {
-    "cross": "hearthfire:block/mushroom_colony_red_stage0"
+    "cross": "hearthfire:blocks/mushroom_colony_red_stage0"
   }
 }

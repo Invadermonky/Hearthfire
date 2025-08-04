@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.blocks.feasts;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.properties.base.AbstractFeastProperties;
+import com.invadermonky.hearthfire.api.properties.blocks.base.AbstractFeastProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.config.ConfigTags;
 import com.invadermonky.hearthfire.util.helpers.LogHelper;
@@ -16,6 +16,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -23,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -35,7 +37,6 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     public static final PropertyInteger SERVINGS = PropertyInteger.create("servings", 0, 3);
 
     private final T properties;
-    private ItemStack feastItem;
 
     public AbstractBlockFeast(String unlocName, String modId, CreativeTabs creativeTab, T properties) {
         super(properties.material);
@@ -45,7 +46,6 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
         this.setSoundType(properties.soundType);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(SERVINGS, 0));
         this.properties = properties;
-        this.feastItem = ItemStack.EMPTY;
     }
 
     public AbstractBlockFeast(String unlocName, T properties) {
@@ -56,16 +56,13 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
         return this.properties;
     }
 
-    public ItemStack getFeastItem() {
-        return this.feastItem.isEmpty() ? ItemStack.EMPTY : this.feastItem.copy();
-    }
-
-    public void setFeastItem(ItemStack feastItem) {
-        this.feastItem = feastItem;
+    public ItemStack getFeastServing() {
+        ItemStack stack = new ItemStack(this.properties.getServingItem());
+        return !stack.isEmpty() ? stack : ItemStack.EMPTY;
     }
 
     protected boolean handleBowlInteract(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack bowlStack) {
-        ItemStack harvested = this.getFeastItem();
+        ItemStack harvested = this.getFeastServing();
         if (!player.isCreative()) {
             bowlStack.shrink(1);
         }
@@ -76,14 +73,19 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
         return true;
     }
 
-    protected boolean handleKnifeInteract(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack knifeStack) {
+    protected boolean handleKnifeInteract(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack knifeStack, EnumFacing facing) {
         if (knifeStack.isItemStackDamageable()) {
             knifeStack.damageItem(1, player);
         }
 
-        ItemStack harvested = this.getFeastItem();
-        if (!player.addItemStackToInventory(harvested)) {
-            player.dropItem(harvested, true);
+        if (!world.isRemote) {
+            AxisAlignedBB collisionBox = state.getCollisionBoundingBox(world, pos);
+            double yOffset = collisionBox != null ? collisionBox.maxY : 1;
+            EntityItem entityItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + yOffset, pos.getZ() + 0.5, this.getFeastServing());
+            entityItem.motionX = 0;
+            entityItem.motionY = -0.15;
+            entityItem.motionZ = 0;
+            world.spawnEntity(entityItem);
         }
 
         this.consumeServing(world, pos, state);
@@ -93,7 +95,7 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     protected boolean handleDirectInteract(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
         //TODO: Cake chomp and break particles
         if (player.canEat(false) || player.isCreative()) {
-            ItemStack feastItem = this.getFeastItem();
+            ItemStack feastItem = this.getFeastServing();
             feastItem.getItem().onItemUseFinish(feastItem, world, player);
             this.consumeServing(world, pos, state);
             return true;
@@ -109,7 +111,7 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
             IBlockState iblockstate1 = world.getBlockState(pos.south());
             IBlockState iblockstate2 = world.getBlockState(pos.west());
             IBlockState iblockstate3 = world.getBlockState(pos.east());
-            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+            EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
 
             if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
                 enumfacing = EnumFacing.SOUTH;
@@ -157,13 +159,18 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     }
 
     @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+        this.setDefaultFacing(worldIn, pos, state);
+    }
+
+    @Override
     public int damageDropped(IBlockState state) {
         return 4 - this.getRemainingServings(state);
     }
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (this.getFeastItem().isEmpty()) {
+        if (this.getFeastServing().isEmpty()) {
             LogHelper.error("Failed interaction with " + this.getRegistryName() + ". Block does not have valid registered feast harvest item.");
             //TODO: Add the string id to the feast builder to remove the fragile item association method.
             //return false;
@@ -181,7 +188,7 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
 
         if (this.properties.servingUsesKnife) {
             if (ConfigTags.isKnifeItem(heldStack)) {
-                return this.handleKnifeInteract(world, pos, state, player, heldStack);
+                return this.handleKnifeInteract(world, pos, state, player, heldStack, facing);
             } else {
                 errorType = "knife";
             }
@@ -207,11 +214,6 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         int servings = 4 - stack.getItemDamage();
         tooltip.add(TextFormatting.BLUE + I18n.format(StringHelper.getTranslationKey("feast", "tooltip", "servings"), servings));
-    }
-
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        this.setDefaultFacing(worldIn, pos, state);
     }
 
     @Override

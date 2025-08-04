@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.util.helpers;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.items.util.FoodEffect;
+import com.invadermonky.hearthfire.api.utils.FoodEffect;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.ITextComponent;
