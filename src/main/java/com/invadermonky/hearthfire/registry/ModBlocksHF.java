@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.registry;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.ICustomItemModel;
+import com.invadermonky.hearthfire.api.blocks.ICustomBlockItem;
 import com.invadermonky.hearthfire.blocks.BlockOrganicCompost;
 import com.invadermonky.hearthfire.blocks.BlockRichFarmland;
 import com.invadermonky.hearthfire.blocks.BlockRichSoil;
@@ -88,8 +88,8 @@ public class ModBlocksHF {
 
     public static void registerBlockItems(IForgeRegistry<Item> registry) {
         modBlocks.forEach(block -> {
-            if (block instanceof ICustomItemModel) {
-                ((ICustomItemModel) block).registerBlockItem(registry);
+            if (block instanceof ICustomBlockItem) {
+                ((ICustomBlockItem) block).registerBlockItem(registry);
             } else {
                 registry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
             }
@@ -98,8 +98,8 @@ public class ModBlocksHF {
 
     public static void registerBlockModels(ModelRegistryEvent event) {
         modBlocks.forEach(block -> {
-            if (block instanceof ICustomItemModel) {
-                ((ICustomItemModel) block).registerBlockItemModel(event);
+            if (block instanceof ICustomBlockItem) {
+                ((ICustomBlockItem) block).registerBlockItemModel(event);
             } else if (Item.getItemFromBlock(block) != Items.AIR) {
                 ModelResourceLocation loc = new ModelResourceLocation(block.delegate.name().toString(), "inventory");
                 ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, loc);

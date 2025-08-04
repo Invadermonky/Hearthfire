@@ -1,6 +1,6 @@
 package com.invadermonky.hearthfire.blocks.crops;
 
-import com.invadermonky.hearthfire.api.blocks.ICustomItemModel;
+import com.invadermonky.hearthfire.api.blocks.ICustomBlockItem;
 import com.invadermonky.hearthfire.api.properties.blocks.base.AbstractCropProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -17,7 +17,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Random;
 
-public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends BlockCrops implements ICustomItemModel {
+public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends BlockCrops implements ICustomBlockItem {
     protected boolean dropOnlyCrops;
     private T properties;
     //TODO: ungrown crops are dropping seeds if dropOnlyCrops is set to true.

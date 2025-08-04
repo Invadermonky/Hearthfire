@@ -1,7 +1,7 @@
 package com.invadermonky.hearthfire.blocks.feasts;
 
 import com.invadermonky.hearthfire.Hearthfire;
-import com.invadermonky.hearthfire.api.blocks.ICustomItemModel;
+import com.invadermonky.hearthfire.api.blocks.ICustomBlockItem;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class BlockEmptyPlate extends Block implements ICustomItemModel {
+public class BlockEmptyPlate extends Block implements ICustomBlockItem {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyEnum<EnumPlateType> PLATE_TYPE = PropertyEnum.create("plate", EnumPlateType.class);
     protected static final AxisAlignedBB AABB_PLATE = new AxisAlignedBB(0.0625, 0, 0.0625, 0.9375, 0.0625, 0.9375);
