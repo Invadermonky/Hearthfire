@@ -61,11 +61,9 @@ public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends
 
         int age = this.getAge(state);
         if (age >= this.getMaxAge()) {
-            int k = 3 + fortune;
-
             for (int i = 0; i < 3 + fortune; ++i) {
                 if (rand.nextInt(2 * this.getMaxAge()) <= age) {
-                    drops.add(new ItemStack(this.dropOnlyCrops ? this.getCrop() : this.getSeed(), 1, 0));
+                    drops.add(new ItemStack(this.dropOnlyCrops ? this.getCrop() : this.getSeed()));
                 }
             }
         }

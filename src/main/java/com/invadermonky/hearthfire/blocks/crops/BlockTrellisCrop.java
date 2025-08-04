@@ -6,13 +6,11 @@ import com.invadermonky.hearthfire.blocks.misc.BlockTrellis;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.registry.ModBlocksHF;
 import com.invadermonky.hearthfire.util.MathUtils;
-import net.minecraft.block.Block;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -52,7 +50,7 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
     @Override
     public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
         IBlockState down = worldIn.getBlockState(pos.down());
-        if (worldIn.getLight(pos) < 8 || !worldIn.canSeeSky(pos)) {
+        if (worldIn.getLight(pos) < 8 && !worldIn.canSeeSky(pos)) {
             return false;
         } else if (!down.getBlock().canSustainPlant(down, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this)) {
             return down.getBlock() == this && down.getValue(AGE) >= this.getProperties().viningAge
@@ -60,16 +58,6 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
 
         }
         return true;
-    }
-
-    @Override
-    public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
-        super.dropBlockAsItemWithChance(worldIn, pos, state, chance, fortune);
-    }
-
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(ModBlocksHF.TRELLIS);
     }
 
     @Override
@@ -102,22 +90,13 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
-        this.checkAndDropBlock(worldIn, pos, state);
-    }
-
-    @Override
     protected void checkAndDropBlock(World world, BlockPos pos, IBlockState state) {
         if (state.getBlock() == this) {
             //Not valid positioning for trellis
-            if (!ModBlocksHF.TRELLIS.canBlockStay(world, pos, state)) {
+            if (!ModBlocksHF.TRELLIS.canBlockStay(world, pos, state) || !this.canBlockStay(world, pos, state)) {
                 //Drop all blocks
                 this.dropBlockAsItem(world, pos, state, 0);
                 world.setBlockToAir(pos);
-            } else if (!this.canBlockStay(world, pos, state)) {
-                this.dropBlockAsItem(world, pos, state, 0);
-                world.setBlockState(pos, ModBlocksHF.TRELLIS.getDefaultState(), 3);
             }
         }
     }
@@ -131,15 +110,19 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
         drops.add(new ItemStack(ModBlocksHF.TRELLIS));
 
         //Roots will drop seeds
-        if (this.getTrellisType(state) == TrellisType.ROOT) {
-            for (int i = 0; i < 3 + fortune; i++) {
-                if (rand.nextInt(2 * this.getMaxAge()) <= age) {
-                    drops.add(new ItemStack(this.getSeed()));
+        if (this.isTrellisRoot(state)) {
+            //Roots always drop at least 1 seed
+            drops.add(new ItemStack(this.getSeed()));
+            if (age >= this.getMaxAge()) {
+                for (int i = 0; i < 3 + fortune; i++) {
+                    if (rand.nextInt(2 * this.getMaxAge()) <= age) {
+                        drops.add(new ItemStack(this.dropOnlyCrops ? this.getCrop() : this.getSeed()));
+                    }
                 }
             }
         }
 
-        //Max age will drop crops normally
+        //Max age will drop interaction crops
         if (this.getAge(state) >= this.getMaxAge()) {
             drops.add(this.getInteractDrops(rand));
         }
@@ -193,6 +176,10 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
 
     public TrellisType getTrellisType(IBlockState state) {
         return state.getValue(TRELLIS);
+    }
+
+    public boolean isTrellisRoot(IBlockState state) {
+        return this.getTrellisType(state) == TrellisType.ROOT;
     }
 
     public enum TrellisType implements IStringSerializable {

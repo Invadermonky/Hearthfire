@@ -1,9 +1,11 @@
 package com.invadermonky.hearthfire.blocks.feasts;
 
 import com.invadermonky.hearthfire.Hearthfire;
+import com.invadermonky.hearthfire.api.blocks.ICustomBlockItem;
 import com.invadermonky.hearthfire.api.properties.blocks.base.AbstractFeastProperties;
 import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.config.ConfigTags;
+import com.invadermonky.hearthfire.items.blocks.ItemBlockFeast;
 import com.invadermonky.hearthfire.util.helpers.LogHelper;
 import com.invadermonky.hearthfire.util.helpers.StringHelper;
 import net.minecraft.block.Block;
@@ -12,6 +14,7 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,6 +22,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -28,11 +32,14 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>> extends Block {
+public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>> extends Block implements ICustomBlockItem {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyInteger SERVINGS = PropertyInteger.create("servings", 0, 3);
 
@@ -218,7 +225,19 @@ public abstract class AbstractBlockFeast<T extends AbstractFeastProperties<?, T>
 
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+        ItemStack stack = placer.getHeldItem(hand);
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(SERVINGS, stack.getItemDamage());
+    }
+
+    @Override
+    public void registerBlockItem(IForgeRegistry<Item> registry) {
+        registry.register(new ItemBlockFeast(this).setRegistryName(this.getRegistryName()));
+    }
+
+    @Override
+    public void registerBlockItemModel(ModelRegistryEvent event) {
+        ModelResourceLocation loc = new ModelResourceLocation(this.delegate.name().toString(), "inventory");
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, loc);
     }
 
     public int getRemainingServings(IBlockState state) {
