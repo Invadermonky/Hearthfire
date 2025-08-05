@@ -6,8 +6,6 @@ import com.invadermonky.hearthfire.items.*;
 import com.invadermonky.hearthfire.items.seeds.ItemSeedFoodHF;
 import com.invadermonky.hearthfire.items.seeds.ItemSeedsHF;
 import com.invadermonky.hearthfire.items.seeds.ItemTrellisSeeds;
-import com.invadermonky.hearthfire.libs.DogFoodValues;
-import com.invadermonky.hearthfire.libs.HorseFeedValues;
 import com.invadermonky.hearthfire.util.helpers.LogHelper;
 import com.invadermonky.hearthfire.util.libs.ItemPropertiesHF;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -24,6 +22,7 @@ import java.util.List;
 public class ModItemsHF {
 
     //Tools
+    public static final ItemDebugBonemeal DEBUG_BONEMEAL = null;
     public static final ItemKnife KNIFE_FLINT = null;
     public static final ItemKnife KNIFE_IRON = null;
     public static final ItemKnife KNIFE_GOLD = null;
@@ -84,6 +83,8 @@ public class ModItemsHF {
     }
 
     public static void initItems() {
+        addItemToRegister(new ItemDebugBonemeal());
+
         //Tools
         addItemToRegister(new ItemKnife("knife_flint", Item.ToolMaterial.STONE));
         addItemToRegister(new ItemKnife("knife_iron", Item.ToolMaterial.IRON));
@@ -100,9 +101,6 @@ public class ModItemsHF {
         addItemToRegister(new ItemSeedsHF("seeds_cabbage", ItemPropertiesHF.PROPS_SEEDS_CABBAGE));
         addItemToRegister(new ItemSeedsHF("seeds_corn", ItemPropertiesHF.PROPS_SEEDS_CORN));
         addItemToRegister(new ItemTrellisSeeds("seeds_tomato", ItemPropertiesHF.PROPS_SEEDS_TOMATO));
-
-
-        //TODO: Testing each food type. Will need to remove to avoid pissing off FD dev.
 
         //Sweets
         addItemToRegister(new ItemFoodHF("cake_slice", ItemPropertiesHF.PROPS_CAKE));
