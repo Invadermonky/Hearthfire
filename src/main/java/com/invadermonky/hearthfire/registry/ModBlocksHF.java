@@ -16,6 +16,7 @@ import com.invadermonky.hearthfire.blocks.feasts.BlockPlatedFeast;
 import com.invadermonky.hearthfire.blocks.misc.BlockTrellis;
 import com.invadermonky.hearthfire.util.libs.BlockPropertiesHF;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -48,6 +49,7 @@ public class ModBlocksHF {
     public static final BlockTrellis TRELLIS = null;
 
     //Wild Crops
+    public static final BlockBush BUSH_LINGONBERRY = null;  //TODO: Change block type.
     //public static final BlockSandyShrub SANDY_SHRUB = null;
     public static final BlockWildCrop WILD_CABBAGE = null;
     public static final BlockWildCrop WILD_CORN = null;
@@ -67,6 +69,8 @@ public class ModBlocksHF {
 
     //Feasts
     public static final BlockEmptyPlate EMPTY_PLATE = null;
+    public static final BlockFeast FEAST_APPLE_PIE = null;
+    public static final BlockFeast FEAST_LINGONBERRY_PIE = null;
     public static final BlockFeast FEAST_PIZZA = null;
     public static final BlockPlatedFeast FEAST_ROASTED_CHICKEN = null;
     public static final BlockPlatedFeast FEAST_SHEPHERDS_PIE = null;
@@ -136,6 +140,8 @@ public class ModBlocksHF {
 
         //Feasts
         //addBlockToRegister(new BlockEmptyPlate("empty_plate"));
+        addBlockToRegister(new BlockFeast("feast_apple_pie", BlockPropertiesHF.PROPS_FEAST_APPLE_PIE));
+        addBlockToRegister(new BlockFeast("feast_lingonberry_pie", BlockPropertiesHF.PROPS_FEAST_LINGONBERRY_PIE));
         addBlockToRegister(new BlockFeast("feast_pizza", BlockPropertiesHF.PROPS_FEAST_PIZZA));
         addBlockToRegister(new BlockPlatedFeast("feast_shepherds_pie", BlockPropertiesHF.PROPS_FEAST_SHEPHERDS_PIE));
         addBlockToRegister(new BlockPlatedFeast("feast_roasted_chicken", BlockPropertiesHF.PROPS_FEAST_ROASTED_CHICKEN));

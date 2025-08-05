@@ -6,6 +6,8 @@ import com.invadermonky.hearthfire.items.*;
 import com.invadermonky.hearthfire.items.seeds.ItemSeedFoodHF;
 import com.invadermonky.hearthfire.items.seeds.ItemSeedsHF;
 import com.invadermonky.hearthfire.items.seeds.ItemTrellisSeeds;
+import com.invadermonky.hearthfire.libs.DogFoodValues;
+import com.invadermonky.hearthfire.libs.HorseFeedValues;
 import com.invadermonky.hearthfire.util.helpers.LogHelper;
 import com.invadermonky.hearthfire.util.libs.ItemPropertiesHF;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -37,7 +39,9 @@ public class ModItemsHF {
     public static final ItemTrellisSeeds SEEDS_TOMATO = null;
 
     //Sweets
+    public static final ItemFoodHF APPLE_PIE_SLICE = null;
     public static final ItemFoodHF CAKE_SLICE = null;
+    public static final ItemFoodHF LINGONBERRY_PIE_SLICE = null;
 
     //Soups and Stews
     public static final ItemFoodHF BEEF_STEW = null;
@@ -88,7 +92,6 @@ public class ModItemsHF {
 
         //Crops
         addItemToRegister(new ItemCropFoodHF("cabbage", ItemPropertiesHF.PROPS_CABBAGE));
-        ;
         addItemToRegister(new ItemCropFoodHF("corn", ItemPropertiesHF.PROPS_CORN));
         addItemToRegister(new ItemSeedFoodHF("onion", ItemPropertiesHF.PROPS_ONION));
         addItemToRegister(new ItemCropFoodHF("tomato", ItemPropertiesHF.PROPS_TOMATO));
@@ -102,7 +105,9 @@ public class ModItemsHF {
         //TODO: Testing each food type. Will need to remove to avoid pissing off FD dev.
 
         //Sweets
-        //addItemToRegister(new ItemFoodHF("cake_slice", ItemPropertiesHF.PROPS_CAKE));
+        addItemToRegister(new ItemFoodHF("cake_slice", ItemPropertiesHF.PROPS_CAKE));
+        addItemToRegister(new ItemFoodHF("apple_pie_slice", ItemPropertiesHF.PROPS_APPLE_PIE));
+        addItemToRegister(new ItemFoodHF("lingonberry_pie_slice", ItemPropertiesHF.PROPS_LINGONBERRY_PIE));
 
         //Soups and Stews
         //addItemToRegister(BEEF_STEW = new ItemFoodHF(FoodValues.BEEF_STEW), "beef_stew");
@@ -115,8 +120,8 @@ public class ModItemsHF {
         //addItemToRegister(BACON_AND_EGGS = new ItemFoodHF(FoodValues.BACON_AND_EGGS), "bacon_and_eggs");
 
         //Pet Food
-        //addItemToRegister(DOG_FOOD = new ItemDogFood(DogFoodValues.DOG_FOOD), "dog_food");
-        //addItemToRegister(HORSE_FEED = new ItemHorseFeed(HorseFeedValues.HORSE_FEED), "horse_feed");
-        //addItemToRegister(PREMIUM_HORSE_FEED = new ItemHorseFeed(HorseFeedValues.PREMIUM_HORSE_FEED), "premium_horse_feed");
+        //addItemToRegister(new ItemDogFood("dog_food", DogFoodValues.DOG_FOOD));
+        //addItemToRegister(new ItemHorseFeed("horse_feed", HorseFeedValues.HORSE_FEED));
+        //addItemToRegister(new ItemHorseFeed("premium_horse_feed", HorseFeedValues.PREMIUM_HORSE_FEED));
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "hearthfire:block/feast_pie_1",
+  "textures": {
+    "texture": "hearthfire:blocks/feast_apple_pie",
+    "particle": "hearthfire:blocks/feast_apple_pie"
+  }
+}

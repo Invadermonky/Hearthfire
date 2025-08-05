@@ -1,6 +1,8 @@
 package com.invadermonky.hearthfire.items;
 
+import com.invadermonky.hearthfire.Hearthfire;
 import com.invadermonky.hearthfire.api.utils.AttributeBoost;
+import com.invadermonky.hearthfire.client.gui.CreativeTabsHF;
 import com.invadermonky.hearthfire.config.ConfigHandlerHF;
 import com.invadermonky.hearthfire.items.properties.HorseFeedProperties;
 import com.invadermonky.hearthfire.util.helpers.StringHelper;
@@ -27,7 +29,10 @@ import java.util.List;
 public class ItemHorseFeed extends Item {
     public HorseFeedProperties properties;
 
-    public ItemHorseFeed(HorseFeedProperties properties) {
+    public ItemHorseFeed(String unlocName, HorseFeedProperties properties) {
+        this.setRegistryName(Hearthfire.MOD_ID, unlocName);
+        this.setTranslationKey(this.getRegistryName().toString());
+        this.setCreativeTab(CreativeTabsHF.TAB_FARM_AND_FEAST);
         this.properties = properties;
         this.maxStackSize = 16;
     }

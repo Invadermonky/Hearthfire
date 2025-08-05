@@ -6,6 +6,7 @@ import com.invadermonky.hearthfire.api.properties.items.food.CropFoodProperties;
 import com.invadermonky.hearthfire.api.properties.items.food.FoodProperties;
 import com.invadermonky.hearthfire.registry.ModBlocksHF;
 import com.invadermonky.hearthfire.registry.ModPotionsHF;
+import net.minecraftforge.common.EnumPlantType;
 
 public class ItemPropertiesHF {
     public static final int DURATION_BRIEF = 600;       // 30 seconds
@@ -17,6 +18,7 @@ public class ItemPropertiesHF {
     //Seeds
     public static final SeedProperties PROPS_SEEDS_CABBAGE = new SeedProperties.SeedBuilder(ModBlocksHF.CROP_CABBAGE).build();
     public static final SeedProperties PROPS_SEEDS_CORN = new SeedProperties.SeedBuilder(ModBlocksHF.CROP_CORN).build();
+    public static final SeedProperties PROPS_SEEDS_LINGONBERRY = new SeedProperties.SeedBuilder(ModBlocksHF.BUSH_LINGONBERRY, EnumPlantType.Plains).build();
     public static final SeedProperties PROPS_SEEDS_TOMATO = new SeedProperties.SeedBuilder(ModBlocksHF.CROP_TOMATO).build();
 
     //Crops
@@ -30,10 +32,15 @@ public class ItemPropertiesHF {
     //Feasts
     //TODO: Modify food values.
     public static final FoodProperties PROPS_PIZZA_SLICE = new FoodProperties.FoodBuilder(1, 1f).build();
-    public static final FoodProperties PROPS_PORK_ROAST = new FoodProperties.FoodBuilder(1, 1f).addFoodEffect(ModPotionsHF.NOURISHMENT, DURATION_LONG).setBowlFood().build();
-    public static final FoodProperties PROPS_ROAST_CHICKEN = new FoodProperties.FoodBuilder(1, 1f).addFoodEffect(ModPotionsHF.NOURISHMENT, DURATION_LONG).setBowlFood().build();
-    public static final FoodProperties PROPS_SHEPHERDS_PIE = new FoodProperties.FoodBuilder(1, 1f).addFoodEffect(ModPotionsHF.NOURISHMENT, DURATION_LONG).setBowlFood().build();
+    public static final FoodProperties PROPS_PORK_ROAST = new FoodProperties.FoodBuilder(1, 1f)
+            .addFoodEffect(ModPotionsHF.NOURISHMENT, DURATION_LONG).setBowlFood().build();
+    public static final FoodProperties PROPS_ROAST_CHICKEN = new FoodProperties.FoodBuilder(1, 1f)
+            .addFoodEffect(ModPotionsHF.NOURISHMENT, DURATION_LONG).setBowlFood().build();
+    public static final FoodProperties PROPS_SHEPHERDS_PIE = new FoodProperties.FoodBuilder(1, 1f)
+            .addFoodEffect(ModPotionsHF.NOURISHMENT, DURATION_LONG).setBowlFood().build();
 
     //Sweets
+    public static final FoodProperties PROPS_APPLE_PIE = new FoodProperties.FoodBuilder(2, 0.4f).setFastFood().build();
     public static final FoodProperties PROPS_CAKE = new FoodProperties.FoodBuilder(2, 0.1f).setFastFood().build();
+    public static final FoodProperties PROPS_LINGONBERRY_PIE = new FoodProperties.FoodBuilder(2, 0.4f).setFastFood().build();
 }

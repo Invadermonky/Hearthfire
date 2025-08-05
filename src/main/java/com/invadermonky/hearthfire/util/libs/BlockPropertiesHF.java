@@ -25,14 +25,22 @@ public class BlockPropertiesHF {
     public static final DoubleCropProperties PROPS_CROP_CORN = new DoubleCropProperties.DoubleCropBuilder("hearthfire:corn", "hearthfire:seeds_corn", 2).build();
     public static final CropProperties PROPS_CROP_ONION = new CropProperties.CropBuilder("hearthfire:onion").build();
     public static final CropProperties PROPS_CROP_POTATO = new CropProperties.CropBuilder("minecraft:potato").build();
-    public static final TrellisCropProperties PROPS_CROP_TOMATO = new TrellisCropProperties.TrellisCropBuilder("hearthfire:tomato", "hearthfire:seeds_tomato").setMaxHeight(3).setViningAge(4).build();
+    public static final TrellisCropProperties PROPS_CROP_TOMATO = new TrellisCropProperties.TrellisCropBuilder("hearthfire:tomato", "hearthfire:seeds_tomato").build();
 
     //Feasts
-    public static final FeastProperties PROPS_FEAST_PIE = new FeastProperties.FeastBuilder("hearthfire:").setCanEatDirectly().setUsesKnife().setNoHarvest().setAABB(AABB_PIE).build();
-    public static final FeastProperties PROPS_FEAST_PIZZA = new FeastProperties.FeastBuilder("hearthfire:pizza_slice").setCanEatDirectly().setUsesKnife().setNoHarvest().setAABB(AABB_PIZZA).build();
-    public static final PlatedFeastProperties PROPS_FEAST_PORK_ROAST = new PlatedFeastProperties.PlatedFeastBuilder("hearthfire:pork_roast", BlockEmptyPlate.EnumPlateType.ROAST).setAABB(AABB_ROAST).setUsesBowl().build();
-    public static final PlatedFeastProperties PROPS_FEAST_ROASTED_CHICKEN = new PlatedFeastProperties.PlatedFeastBuilder("hearthfire:roast_chicken", BlockEmptyPlate.EnumPlateType.POULTRY).setAABB(AABB_POULTRY).setUsesBowl().build();
-    public static final PlatedFeastProperties PROPS_FEAST_SHEPHERDS_PIE = new PlatedFeastProperties.PlatedFeastBuilder("hearthfire:shepherds_pie", BlockEmptyPlate.EnumPlateType.DIRTY).setAABB(AABB_CAKE_PLATE).setUsesBowl().build();
-    public static final FeastProperties PROPS_FEAST_STUFFED_PUMPKIN = new FeastProperties.FeastBuilder("hearthfire:stuffed_pumpkin").setUsesBowl().setAABB(AABB_GOURD).build();
+    public static final FeastProperties PROPS_FEAST_APPLE_PIE = new FeastProperties.FeastBuilder("hearthfire:apple_pie_slice")
+            .setCanEatDirectly().setUsesKnife().setNoHarvest().setAABB(AABB_PIE).build();
+    public static final FeastProperties PROPS_FEAST_LINGONBERRY_PIE = new FeastProperties.FeastBuilder("hearthfire:lingonberry_pie_slice")
+            .setCanEatDirectly().setUsesKnife().setNoHarvest().setAABB(AABB_PIE).build();
+    public static final FeastProperties PROPS_FEAST_PIZZA = new FeastProperties.FeastBuilder("hearthfire:pizza_slice")
+            .setCanEatDirectly().setUsesKnife().setNoHarvest().setAABB(AABB_PIZZA).build();
+    public static final PlatedFeastProperties PROPS_FEAST_PORK_ROAST = new PlatedFeastProperties.PlatedFeastBuilder("hearthfire:pork_roast", BlockEmptyPlate.EnumPlateType.ROAST)
+            .setUsesBowl().setAABB(AABB_ROAST).build();
+    public static final PlatedFeastProperties PROPS_FEAST_ROASTED_CHICKEN = new PlatedFeastProperties.PlatedFeastBuilder("hearthfire:roast_chicken", BlockEmptyPlate.EnumPlateType.POULTRY)
+            .setUsesBowl().setAABB(AABB_POULTRY).build();
+    public static final PlatedFeastProperties PROPS_FEAST_SHEPHERDS_PIE = new PlatedFeastProperties.PlatedFeastBuilder("hearthfire:shepherds_pie", BlockEmptyPlate.EnumPlateType.DIRTY)
+            .setUsesBowl().setAABB(AABB_CAKE_PLATE).build();
+    public static final FeastProperties PROPS_FEAST_STUFFED_PUMPKIN = new FeastProperties.FeastBuilder("hearthfire:stuffed_pumpkin")
+            .setUsesBowl().setAABB(AABB_GOURD).build();
 
 }
