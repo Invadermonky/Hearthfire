@@ -28,17 +28,17 @@ public class ItemTrellisSeeds extends ItemSeedsHF {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack heldStack = player.getHeldItem(hand);
-        IBlockState state = worldIn.getBlockState(pos);
+        IBlockState soilState = worldIn.getBlockState(pos);
         IBlockState plantState = this.getPlant(worldIn, pos);
 
         //If interacting with trellis block adjust values to soil below
-        if (state.getBlock() == ModBlocksHF.TRELLIS) {
+        if (soilState.getBlock() == ModBlocksHF.TRELLIS) {
             pos = pos.down();
-            state = worldIn.getBlockState(pos);
+            soilState = worldIn.getBlockState(pos);
             facing = EnumFacing.UP;
         }
 
-        if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, heldStack) && this.canSoilSustainCrop(worldIn, pos, state)) {
+        if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, heldStack) && this.canSoilSustainCrop(worldIn, pos, soilState)) {
             worldIn.setBlockState(pos.up(), plantState);
             if (player instanceof EntityPlayerMP) {
                 CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos.up(), heldStack);

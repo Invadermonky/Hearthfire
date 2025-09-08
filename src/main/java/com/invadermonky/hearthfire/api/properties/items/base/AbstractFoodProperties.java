@@ -7,15 +7,15 @@ import net.minecraft.item.ItemStack;
 import java.util.List;
 
 public class AbstractFoodProperties<T extends AbstractFoodBuilder<T, S>, S extends AbstractFoodProperties<T, S>> extends ObjectProperties<T, S> {
-    public int nutrition;
-    public float saturation;
-    public boolean isDogFood;
-    public int eatDuration;
-    public boolean canAlwaysEat;
-    public int maxStackSize;
-    public ItemStack containerItem;
-    public List<FoodEffect> foodEffects;
-    public boolean hasCustomTooltip;
+    public final int nutrition;
+    public final float saturation;
+    public final boolean isDogFood;
+    public final int eatDuration;
+    public final boolean canAlwaysEat;
+    public final int maxStackSize;
+    public final ItemStack containerItem;
+    public final List<FoodEffect> foodEffects;
+    public final boolean hasCustomTooltip;
 
     public AbstractFoodProperties(T builder) {
         super(builder);

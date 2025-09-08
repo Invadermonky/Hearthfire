@@ -20,6 +20,7 @@ public class ItemPropertiesHF {
     public static final SeedProperties PROPS_SEEDS_CORN = new SeedProperties.SeedBuilder(ModBlocksHF.CROP_CORN).build();
     public static final SeedProperties PROPS_SEEDS_LINGONBERRY = new SeedProperties.SeedBuilder(ModBlocksHF.BUSH_LINGONBERRY, EnumPlantType.Plains).build();
     public static final SeedProperties PROPS_SEEDS_TOMATO = new SeedProperties.SeedBuilder(ModBlocksHF.CROP_TOMATO).build();
+    public static final SeedProperties PROPS_SEEDS_RICE = new SeedProperties.SeedBuilder(ModBlocksHF.CROP_RICE).build();
 
     //Crops
     public static final CropFoodProperties PROPS_CABBAGE = new CropFoodProperties.CropFoodBuilder(2, 0.4f, ModBlocksHF.CROP_CABBAGE).build();

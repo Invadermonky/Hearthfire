@@ -4,8 +4,6 @@ import com.invadermonky.hearthfire.api.properties.items.base.AbstractFoodBuilder
 import com.invadermonky.hearthfire.api.properties.items.base.AbstractFoodProperties;
 
 public class FoodProperties extends AbstractFoodProperties<FoodProperties.FoodBuilder, FoodProperties> {
-    public static final FoodProperties EMPTY = new FoodBuilder(0, 0).build();
-
     public FoodProperties(FoodBuilder builder) {
         super(builder);
     }

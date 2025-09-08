@@ -6,10 +6,7 @@ import com.invadermonky.hearthfire.blocks.BlockOrganicCompost;
 import com.invadermonky.hearthfire.blocks.BlockRichFarmland;
 import com.invadermonky.hearthfire.blocks.BlockRichSoil;
 import com.invadermonky.hearthfire.blocks.BlockWildCrop;
-import com.invadermonky.hearthfire.blocks.crops.BlockCropHF;
-import com.invadermonky.hearthfire.blocks.crops.BlockDoubleCrop;
-import com.invadermonky.hearthfire.blocks.crops.BlockMushroomColony;
-import com.invadermonky.hearthfire.blocks.crops.BlockTrellisCrop;
+import com.invadermonky.hearthfire.blocks.crops.*;
 import com.invadermonky.hearthfire.blocks.feasts.BlockEmptyPlate;
 import com.invadermonky.hearthfire.blocks.feasts.BlockFeast;
 import com.invadermonky.hearthfire.blocks.feasts.BlockPlatedFeast;
@@ -22,13 +19,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @GameRegistry.ObjectHolder(Hearthfire.MOD_ID)
 public class ModBlocksHF {
@@ -64,6 +63,7 @@ public class ModBlocksHF {
     public static final BlockDoubleCrop CROP_CORN = null;
     public static final BlockCropHF CROP_ONION = null;
     public static final BlockTrellisCrop CROP_TOMATO = null;
+    public static final BlockWaterCrop CROP_RICE = null;
 
     //Pastries
 
@@ -77,21 +77,31 @@ public class ModBlocksHF {
     public static final BlockPlatedFeast FEAST_PORK_ROAST = null;
 
 
-    private static final List<Block> modBlocks = new ArrayList<>();
+
+    private static final Map<Block, Class<? extends TileEntity>> modBlocks = new LinkedHashMap<>();
+
+    public static void addBlockToRegister(Block block, @Nullable Class<? extends TileEntity> tileClass) {
+        if (block != null) {
+            modBlocks.put(block, tileClass);
+        }
+    }
 
     public static void addBlockToRegister(Block block) {
-        if (block != null) {
-            modBlocks.add(block);
-        }
+        addBlockToRegister(block, null);
     }
 
     public static void registerBlocks(IForgeRegistry<Block> registry) {
         initBlocks();
-        modBlocks.forEach(registry::register);
+        modBlocks.forEach((block, tileClass) -> {
+            registry.register(block);
+            if(tileClass != null) {
+                GameRegistry.registerTileEntity(tileClass, block.getRegistryName());
+            }
+        });
     }
 
     public static void registerBlockItems(IForgeRegistry<Item> registry) {
-        modBlocks.forEach(block -> {
+        modBlocks.keySet().forEach(block -> {
             if (block instanceof ICustomBlockItem) {
                 ((ICustomBlockItem) block).registerBlockItem(registry);
             } else {
@@ -101,7 +111,7 @@ public class ModBlocksHF {
     }
 
     public static void registerBlockModels(ModelRegistryEvent event) {
-        modBlocks.forEach(block -> {
+        modBlocks.keySet().forEach(block -> {
             if (block instanceof ICustomBlockItem) {
                 ((ICustomBlockItem) block).registerBlockItemModel(event);
             } else if (Item.getItemFromBlock(block) != Items.AIR) {
@@ -137,6 +147,7 @@ public class ModBlocksHF {
         addBlockToRegister(new BlockDoubleCrop("crop_corn", BlockPropertiesHF.PROPS_CROP_CORN).setDropOnlyCrops());
         addBlockToRegister(new BlockCropHF("crop_onion", BlockPropertiesHF.PROPS_CROP_ONION));
         addBlockToRegister(new BlockTrellisCrop("crop_tomato", BlockPropertiesHF.PROPS_CROP_TOMATO));
+        addBlockToRegister(new BlockWaterCrop("crop_rice", BlockPropertiesHF.PROPS_CROP_RICE));
 
         //Feasts
         //addBlockToRegister(new BlockEmptyPlate("empty_plate"));
@@ -146,6 +157,5 @@ public class ModBlocksHF {
         addBlockToRegister(new BlockPlatedFeast("feast_shepherds_pie", BlockPropertiesHF.PROPS_FEAST_SHEPHERDS_PIE));
         addBlockToRegister(new BlockPlatedFeast("feast_roasted_chicken", BlockPropertiesHF.PROPS_FEAST_ROASTED_CHICKEN));
         addBlockToRegister(new BlockPlatedFeast("feast_pork_roast", BlockPropertiesHF.PROPS_FEAST_PORK_ROAST));
-
     }
 }

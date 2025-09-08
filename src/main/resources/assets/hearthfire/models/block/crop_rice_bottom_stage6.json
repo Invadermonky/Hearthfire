@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "hearthfire:blocks/crop_rice_bottom_stage6"
+  }
+}

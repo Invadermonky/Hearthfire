@@ -6,6 +6,7 @@ import com.invadermonky.hearthfire.items.*;
 import com.invadermonky.hearthfire.items.seeds.ItemSeedFoodHF;
 import com.invadermonky.hearthfire.items.seeds.ItemSeedsHF;
 import com.invadermonky.hearthfire.items.seeds.ItemTrellisSeeds;
+import com.invadermonky.hearthfire.items.seeds.ItemWaterSeeds;
 import com.invadermonky.hearthfire.util.helpers.LogHelper;
 import com.invadermonky.hearthfire.util.libs.ItemPropertiesHF;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -36,6 +37,7 @@ public class ModItemsHF {
     //Seeds
     public static final ItemSeedsHF SEEDS_CABBAGE = null;
     public static final ItemTrellisSeeds SEEDS_TOMATO = null;
+    public static final ItemWaterSeeds RICE = null;
 
     //Sweets
     public static final ItemFoodHF APPLE_PIE_SLICE = null;
@@ -101,6 +103,7 @@ public class ModItemsHF {
         addItemToRegister(new ItemSeedsHF("seeds_cabbage", ItemPropertiesHF.PROPS_SEEDS_CABBAGE));
         addItemToRegister(new ItemSeedsHF("seeds_corn", ItemPropertiesHF.PROPS_SEEDS_CORN));
         addItemToRegister(new ItemTrellisSeeds("seeds_tomato", ItemPropertiesHF.PROPS_SEEDS_TOMATO));
+        addItemToRegister(new ItemWaterSeeds("rice", ItemPropertiesHF.PROPS_SEEDS_RICE));
 
         //Sweets
         addItemToRegister(new ItemFoodHF("cake_slice", ItemPropertiesHF.PROPS_CAKE));

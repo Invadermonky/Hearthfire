@@ -45,6 +45,7 @@ item.hearthfire:shepherds_pie.name=Plate of Shepherd's Pie
 # Subtitles
 # Tooltips
 tooltip.hearthfire:feast.servings=Servings: %d
+tooltip.hearthfire:debug_bonemeal=Increases crop age by 1
 
 
 

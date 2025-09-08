@@ -42,12 +42,6 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
     }
 
     @Override
-    public void grow(World worldIn, BlockPos pos, IBlockState state) {
-        int age = Math.min(this.getMaxAge(), this.getAge(state) + this.getBonemealAgeIncrease(worldIn));
-        this.handleGrowth(worldIn, pos, state, age);
-    }
-
-    @Override
     public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
         IBlockState down = worldIn.getBlockState(pos.down());
         if (worldIn.getLight(pos) < 8 && !worldIn.canSeeSky(pos)) {
@@ -165,7 +159,8 @@ public class BlockTrellisCrop extends AbstractBlockCropHF<TrellisCropProperties>
         }
     }
 
-    public void handleGrowth(World world, BlockPos pos, IBlockState state, int age) {
+    @Override
+    public void handleCropGrowth(World world, BlockPos pos, IBlockState state, int age) {
         this.attemptVineUpward(world, pos, state, false);
         this.setCropAge(world, pos, state, age);
     }

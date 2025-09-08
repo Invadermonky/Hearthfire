@@ -69,17 +69,11 @@ public class BlockDoubleCrop extends AbstractBlockCropHF<DoubleCropProperties> {
             if (age < this.getMaxAge() && cropPart == DoubleCropPart.BOTTOM) {
                 float f = getGrowthChance(this, worldIn, pos);
                 if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt((int) (25.0F / f) + 1) == 0)) {
-                    this.handleGrowth(worldIn, pos, state, age + 1);
+                    this.handleCropGrowth(worldIn, pos, state, age + 1);
                     ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
                 }
             }
         }
-    }
-
-    @Override
-    public void grow(World worldIn, BlockPos pos, IBlockState state) {
-        int age = Math.min(this.getMaxAge(), this.getAge(state) + this.getBonemealAgeIncrease(worldIn));
-        this.handleGrowth(worldIn, pos, state, age);
     }
 
     @Override
@@ -106,11 +100,12 @@ public class BlockDoubleCrop extends AbstractBlockCropHF<DoubleCropProperties> {
         return new BlockStateContainer(this, AGE, CROP_PART);
     }
 
-    public void handleGrowth(World world, BlockPos pos, IBlockState state, int age) {
+    @Override
+    public void handleCropGrowth(World world, BlockPos pos, IBlockState state, int age) {
         if (state.getValue(CROP_PART) == DoubleCropPart.TOP) {
             IBlockState down = world.getBlockState(pos.down());
             if (down.getBlock() == this && down.getValue(CROP_PART) == DoubleCropPart.BOTTOM) {
-                ((BlockDoubleCrop) down.getBlock()).handleGrowth(world, pos.down(), down, age);
+                ((BlockDoubleCrop) down.getBlock()).handleCropGrowth(world, pos.down(), down, age);
             }
         } else {
             //Once the crop reaches the required age, it grows into the block above it.

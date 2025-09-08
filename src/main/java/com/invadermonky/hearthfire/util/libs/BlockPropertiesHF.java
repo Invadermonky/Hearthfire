@@ -26,6 +26,7 @@ public class BlockPropertiesHF {
     public static final CropProperties PROPS_CROP_ONION = new CropProperties.CropBuilder("hearthfire:onion").build();
     public static final CropProperties PROPS_CROP_POTATO = new CropProperties.CropBuilder("minecraft:potato").build();
     public static final TrellisCropProperties PROPS_CROP_TOMATO = new TrellisCropProperties.TrellisCropBuilder("hearthfire:tomato", "hearthfire:seeds_tomato").build();
+    public static final DoubleCropProperties PROPS_CROP_RICE = new DoubleCropProperties.DoubleCropBuilder("hearthfire:rice_panicle", "hearthfire:rice", 4).build();
 
     //Feasts
     public static final FeastProperties PROPS_FEAST_APPLE_PIE = new FeastProperties.FeastBuilder("hearthfire:apple_pie_slice")

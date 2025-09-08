@@ -4,6 +4,7 @@ import com.invadermonky.hearthfire.api.blocks.ICustomBlockItem;
 import com.invadermonky.hearthfire.api.properties.blocks.base.AbstractCropProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -17,7 +18,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Random;
 
-public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends BlockCrops implements ICustomBlockItem {
+public abstract class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends BlockCrops implements ICustomBlockItem {
     protected boolean dropOnlyCrops;
     private T properties;
     //TODO: ungrown crops are dropping seeds if dropOnlyCrops is set to true.
@@ -39,6 +40,8 @@ public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends
         return this;
     }
 
+    public abstract void handleCropGrowth(World world, BlockPos pos, IBlockState state, int age);
+
     @Override
     public Item getSeed() {
         return this.properties.getSeed();
@@ -51,6 +54,7 @@ public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends
 
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        //TODO: Modify this so the properties can adjust the drop amounts
         Random rand = world instanceof World ? ((World) world).rand : RANDOM;
 
         int count = this.quantityDropped(state, fortune, rand);
@@ -70,9 +74,19 @@ public class AbstractBlockCropHF<T extends AbstractCropProperties<?, T>> extends
     }
 
     @Override
+    protected boolean canSustainBush(IBlockState state) {
+        return state.getBlock() instanceof BlockFarmland;
+    }
+
+    @Override
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-        //TODO: Crops are being planted on the wrong soil
-        return super.canPlaceBlockAt(worldIn, pos);
+        return worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && this.canSustainBush(worldIn.getBlockState(pos.down()));
+    }
+
+    @Override
+    public void grow(World worldIn, BlockPos pos, IBlockState state) {
+        int age = Math.min(this.getMaxAge(), this.getAge(state) + this.getBonemealAgeIncrease(worldIn));
+        this.handleCropGrowth(worldIn, pos, state, age);
     }
 
     @Override
